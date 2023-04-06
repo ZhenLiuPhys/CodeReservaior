@@ -1,0 +1,326 @@
+#define higgsino_cxx
+#include "higgsino.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <TH2.h>
+#include <TStyle.h>
+#include "TLorentzVector.h"
+//#include "mt2_bisect.h"
+#include "mt2_bisect.cpp"
+
+//using namespace std;
+
+int r1 = 37851287;
+int r2 = 890628713;
+int r3 = 78257863;
+int r4 = 197536741;
+const double MZ = 91.1987;
+
+void sort_by_pt(vector<TLorentzVector> & vec);
+double get_MT(TLorentzVector visible, TLorentzVector invisible);
+double get_MT2(TLorentzVector vis1, TLorentzVector vis2, TLorentzVector invisible);
+double randomnum(double low, double high);
+int randint(int range, int &mzran, int &iir, int &kkr, int &jjr);
+TLorentzVector get_missing(TLorentzVector dil, TLorentzVector inv);
+
+TFile *f1;
+TTree *t1;
+
+int total = 0;
+
+Float_t MET;
+Float_t MT22;
+Float_t MT20;
+Float_t MTALL;
+Float_t MTLEP;
+Float_t DRTLEP;
+Float_t MTTAU;
+Float_t MLTAU;
+Int_t JMULT;
+Int_t BJMULT;
+Float_t TAUPT;
+Float_t LEPPT;
+Float_t JETPT[20];
+Float_t BJETPT[20];
+
+void higgsino::Begin(TTree * /*tree*/)
+{
+   TString option = GetOption();
+   
+   f1 = new TFile("higgsinos.root", "recreate");
+   t1 = new TTree("t1", "ino variables");
+
+   t1->Branch("JMULT", &JMULT, "JMULT/I");
+   t1->Branch("BJMULT", &BJMULT, "BJMULT/I");
+   t1->Branch("TAUPT", &TAUPT, "TAUPT/F");
+   t1->Branch("LEPPT", &LEPPT, "LEPPT/F");
+   t1->Branch("MTLEP", &MTLEP, "MTLEP/F");
+   t1->Branch("MTTAU", &MTTAU, "MTTAU/F");
+   t1->Branch("MLTAU", &MLTAU, "MLTAU/F");
+   t1->Branch("MET", &MET, "MET/F");
+   t1->Branch("MTALL", &MTALL, "MTALL/F");   
+   t1->Branch("MT22", &MT22, "MT22/F");
+   t1->Branch("MT20", &MT20, "MT20/F");
+   t1->Branch("JETPT", JETPT, "JETPT[JMULT]/F");
+   t1->Branch("BJETPT", BJETPT, "BJETPT[BJMULT]/F");
+   //t1->Branch("PZNU", &PZNU, "PZNU/F");
+   t1->Branch("DRTLEP", &DRTLEP, "DRTLEP/F");
+   //t1->Branch("DPHILL", &DPHILL, "DPHILL/F");
+   //t1->Branch("ETATA", ETATA, "ETATA[TAMULT]/F");
+
+}
+
+void higgsino::SlaveBegin(TTree * /*tree*/)
+{
+   // The SlaveBegin() function is called after the Begin() function.
+   // When running with PROOF SlaveBegin() is called on each slave server.
+   // The tree argument is deprecated (on PROOF 0 is passed).
+
+   TString option = GetOption();
+
+}
+
+Bool_t higgsino::Process(Long64_t entry)
+{
+  fChain->GetTree()->GetEntry(entry);
+  total++;
+	
+  vector<TLorentzVector > leptons;
+  vector<TLorentzVector > jets;
+  vector<TLorentzVector > bjets;  
+  vector<TLorentzVector > taus;
+  vector<TLorentzVector > photons;
+
+  TLorentzVector temp(0,0,0,0);
+
+  for (int i = 0; i < Electron_size; i++){
+    temp.SetPtEtaPhiM(Electron_PT[i],Electron_Eta[i], Electron_Phi[i], 0.0);
+    if (temp.Pt() > 20.0 && fabs(temp.Eta() ) < 2.5){
+      leptons.push_back(temp);
+    }
+  }
+
+  for (int i = 0; i < Muon_size; i++){
+    temp.SetPtEtaPhiM(Muon_PT[i],Muon_Eta[i], Muon_Phi[i], 0.1);
+    if (temp.Pt() > 20.0 && fabs(temp.Eta() ) < 2.5){
+      leptons.push_back(temp);
+    }
+  }
+
+  for (int i = 0; i < Photon_size; i++){
+    temp.SetPtEtaPhiM(Photon_PT[i],Photon_Eta[i], Photon_Phi[i], 0.0);
+    if (temp.Pt() > 20.0 && fabs(temp.Eta() ) < 2.5){
+      photons.push_back(temp);
+    }
+  }
+
+  for (int i = 0; i < Jet_size; i++){
+    temp.SetPtEtaPhiM(Jet_PT[i],Jet_Eta[i], Jet_Phi[i],Jet_Mass[i]);
+    if (Jet_TauTag[i] > 0.0){
+      if (temp.Pt() > 20.0 && fabs(temp.Eta() ) < 2.5 ){
+	taus.push_back(temp);
+      } 
+    } else if (Jet_BTag[i] > 0.0){
+      if (temp.Pt() > 20.0 && fabs(temp.Eta() ) < 2.5){
+	bjets.push_back(temp);
+      }
+    } else {
+	if (temp.Pt() > 30.0 && fabs(temp.Eta() ) < 2.8 ){
+	jets.push_back(temp);
+	}
+    }
+  }
+      
+  TLorentzVector invisible(0,0,0,0);
+  invisible.SetPtEtaPhiM(MissingET_MET[0], MissingET_Eta[0], MissingET_Phi[0],0.0);
+
+  sort_by_pt(taus);
+  sort_by_pt(leptons);
+  sort_by_pt(jets);
+  sort_by_pt(bjets);
+
+  if (jets.size() >= 0 && bjets.size() > 0 && leptons.size() == 1 && taus.size() == 1){
+
+    for (unsigned int i = 0; i < jets.size(); i++){
+      JETPT[i] = jets[i].Pt();
+    }
+
+    for (unsigned int i = 0; i < bjets.size(); i++){
+      BJETPT[i] = bjets[i].Pt();
+    }
+    
+    LEPPT = leptons[0].Pt();
+    TAUPT = taus[0].Pt();
+    DRTLEP = leptons[0].DeltaR(taus[0]);
+    
+    MTLEP = get_MT(leptons[0], invisible);
+    MTTAU = get_MT(taus[0], invisible);
+
+    TLorentzVector dilep = leptons[0] + taus[0];
+    TLorentzVector vis = dilep + bjets[0];
+
+    MTALL = get_MT(vis, invisible);
+    
+    MLTAU = dilep.M();
+    MET = invisible.Pt();
+    MT22 = get_MT2(leptons[0], taus[0], invisible);
+
+    /* better mT2*/
+    
+    double temp1[3] = {leptons[0].M(), leptons[0].Px(), leptons[0].Py()};
+    double temp2[3] = {taus[0].M(), taus[0].Px(), taus[0].Py()};
+    double pmiss[3] = {NULL, invisible.Px(), invisible.Py()};
+    mt2_bisect::mt2 mt2_event;
+    mt2_event.set_momenta(temp1, temp2, pmiss);
+    mt2_event.set_mn(0.0);
+
+    MT20 = mt2_event.get_mt2();
+
+    /**/
+    
+    JMULT = jets.size();
+    BJMULT = bjets.size();
+    
+    t1->Fill();
+  }
+  
+  return kTRUE;
+}
+
+void higgsino::SlaveTerminate()
+{
+
+}
+
+void higgsino::Terminate()
+{
+  cout << total << endl;
+  f1->cd();
+  t1->Write();
+  f1->Close(); 
+}
+
+
+void sort_by_pt(vector<TLorentzVector> & vec){
+
+  TLorentzVector swap;
+  double ptmax;
+
+  if (vec.size() > 0){
+
+  for (unsigned i = 0; i < vec.size()-1; i++){
+
+    ptmax = vec[i].Pt();
+
+    for (unsigned j = i+1; j < vec.size(); j++){
+
+      if (vec[j].Pt() > ptmax){
+
+	ptmax = vec[j].Pt();
+	swap = vec[i];
+	vec[i] = vec[j];
+	vec[j] = swap;
+      }
+    }
+  }
+  }
+
+  return;
+
+}
+
+double get_MT2(TLorentzVector vis1, TLorentzVector vis2, TLorentzVector invisible){
+
+  double fin_mtrans = 1.0e8;
+  int i = 0;
+
+  TLorentzVector pt1, pt2;
+  double mtrans1, mtrans2, mtmax;
+  double in;
+
+  while (i < 1000){
+
+    in = randomnum(0,1);
+    pt1 = in*invisible;
+    pt2 = (1.0-in)*invisible;
+    
+    mtrans1 = get_MT(vis1, pt1);
+    mtrans2 = get_MT(vis2, pt2);
+    
+    mtmax = max(mtrans1, mtrans2);
+    if (mtmax < fin_mtrans) {fin_mtrans = mtmax;}
+    i++;
+  } 
+
+  return fin_mtrans;
+
+}
+
+
+double get_MT(TLorentzVector visible, TLorentzVector invisible){
+
+  // NB assumes that the invisible system has no mass
+
+  double ETvis = sqrt(visible.M()*visible.M() + visible.Pt()*visible.Pt());
+  double MTSQ = visible.M()*visible.M() + 2.0*(invisible.Pt()*ETvis - visible.Px()*invisible.Px() - visible.Py()*invisible.Py() );
+  return sqrt(MTSQ);
+
+}
+
+int randint(int range, int &mzran, int &iir, int &kkr, int &jjr){
+	
+	int nnr = time(NULL);
+	
+	mzran=iir-kkr;
+	if (mzran < 0){
+		mzran=mzran+2147483579;
+	}
+	iir=jjr; jjr=kkr; kkr=mzran;
+	nnr=69069*nnr+1013904243;
+	mzran=mzran+nnr;
+	float rand=0.50+mzran*0.23283064e-9;
+	
+	int blah = rand*range;
+	
+	return blah;
+	
+}
+
+double randomnum(double low, double high)
+{
+	double range=(high-low);
+	double num = rand() * range / RAND_MAX + low ;
+	return(num);
+}
+
+
+TLorentzVector get_missing(TLorentzVector dil, TLorentzVector inv){
+
+  double MZ2 = MZ*MZ;
+  double mll = dil.M();
+  double delta = (mll*mll - MZ2) - 2.0*(dil.Px()*inv.Px() + dil.Py()*inv.Py());
+  double C0 = delta*delta - 4.0*dil.E()*dil.E()*inv.Pt()*inv.Pt();
+  double A0 = 4.0*(dil.Pz()*dil.Pz() - dil.E()*dil.E() );
+  double B0 = -4.0*delta*dil.Pz();
+
+  double det = B0*B0 - 4.0*A0*C0;
+  double root1, root2;
+  if (det < 0){
+    root1 = -B0/(2.0*A0);
+    root2 = -B0/(2.0*A0);
+  } else {
+    root1 = -B0/(2.0*A0) + sqrt(B0*B0 - 4.0*A0*C0)/(2.0*A0);
+    root2 = -B0/(2.0*A0) - sqrt(B0*B0 - 4.0*A0*C0)/(2.0*A0);
+  }
+  
+  TLorentzVector temp;
+  if (fabs(root1) < fabs(root2)){
+    temp.SetPxPyPzE(inv.Px(), inv.Py(), root1, sqrt(root1*root1 + inv.Pt()*inv.Pt()) );
+  } else {
+    temp.SetPxPyPzE(inv.Px(), inv.Py(), root2, sqrt(root2*root2 + inv.Pt()*inv.Pt()) );
+  }  
+
+  return temp;
+}
