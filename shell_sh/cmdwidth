@@ -1,0 +1,14 @@
+for i in {5..40}
+do
+        a=`expr $i / 10`.`expr $i - $i / 10 \* 10`
+        echo $a
+        sed 's/xxx/'"$a"'/g' s8width/param_card.dat > s8width/Cards/param_card.dat
+        sed 's/xxx/'"$a"'/g' s8width/run_card.dat > s8width/Cards/run_card.dat
+./mg5 <<EOF
+launch s8width
+n
+n
+n
+quit
+EOF
+done

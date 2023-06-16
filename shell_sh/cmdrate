@@ -1,0 +1,17 @@
+i=5
+while read line
+do
+        a=`expr $i / 10`.`expr $i - $i / 10 \* 10`
+        echo $a
+        sed 's/yyy/'"$line"'/g' s8cms/param_card.dat > s8cms/param_card_temp.dat
+        sed 's/xxx/'"$a"'/g' s8cms/param_card_temp.dat > s8cms/Cards/param_card.dat
+        sed 's/xxx/'"$a"'/g' s8cms/run_card.dat > s8cms/Cards/run_card.dat
+./mg5 <<EOF
+launch s8cms
+n
+n
+n
+quit
+EOF
+        i=`expr $i + 1`
+done < "s8cms/width.dat"

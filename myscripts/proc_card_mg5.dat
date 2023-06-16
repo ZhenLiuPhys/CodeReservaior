@@ -1,0 +1,33 @@
+#************************************************************
+#*                        MadGraph 5                        *
+#*                                                          *
+#*                *                       *                 *
+#*                  *        * *        *                   *
+#*                    * * * * 5 * * * *                     *
+#*                  *        * *        *                   *
+#*                *                       *                 *
+#*                                                          *
+#*                                                          *
+#*         VERSION 1.4.5                 2012-04-20         *
+#*                                                          *
+#*    The MadGraph Development Team - Please visit us at    *
+#*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+#*                                                          *
+#************************************************************
+#*                                                          *
+#*               Command File for MadGraph 5                *
+#*                                                          *
+#*     run as ./bin/mg5  filename                           *
+#*                                                          *
+#************************************************************
+
+import model sm
+generate  u s > w+ w- > d c l+ l- vl vl~ QCD=0 @1
+add process  u~ s~ > w+ w- > d~ c~ l+ l- vl vl~ QCD=0 @2
+add process  d c > w+ w- > u s l+ l- vl vl~ QCD=0 @3
+add process  d~ c~ > w+ w- > u~ s~ l+ l- vl vl~ QCD=0 @4
+add process  u d > w+ w- > u d l+ l- vl vl~ QCD=0 @5
+add process  u~ d~ > w+ w- > u~ d~ l+ l- vl vl~ QCD=0 @6
+add process  c~ s~ > w+ w- > c~ s~ l+ l- vl vl~ QCD=0 @7
+add process  c s > w+ w- > c s l+ l- vl vl~ QCD=0 @8
+output wwll

@@ -1,0 +1,26 @@
+for i in {500..1000..100}
+do
+    for j in {250..500..50}
+    	do
+    		b=$(( j * 2 ))
+    		echo $b
+    		if [[ $b -le $i ]] ; then
+		    	a=`expr $j - 100`
+			echo $a
+        		echo $i
+        		echo $j
+        sed 's/xxx/'"$i"'/g' pp_HA_2l2n1/param_card.dat > pp_HA_2l2n1/param_card_tmp1.dat
+        sed 's/yyy/'"$j"'/g' pp_HA_2l2n1/param_card_tmp1.dat > pp_HA_2l2n1/param_card_tmp2.dat
+        sed 's/zzz/'"$a"'/g' pp_HA_2l2n1/param_card_tmp2.dat > pp_HA_2l2n1/Cards/param_card.dat        
+./mg5 <<EOF
+launch pp_HA_2l2n1 -m
+4
+0
+0
+quit
+EOF
+		fi
+	done
+#mkdir stop_pair/Events_all/stop_pair_$i
+#mv stop_pair/Events/* stop_pair/Events_all/stop_pair_$i/.
+done
