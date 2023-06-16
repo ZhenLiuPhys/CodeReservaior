@@ -1,0 +1,125 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3182,        116]
+NotebookOptionsPosition[      2531,         89]
+NotebookOutlinePosition[      2878,        104]
+CellTagsIndexPosition[      2835,        101]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Potential Heavy Higgs Discovery at the Future Muon Collider\
+\>", "Title",
+ CellChangeTimes->{{3.590860903305622*^9, 3.590860918508993*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Physics Constants", "Section",
+ CellChangeTimes->{{3.591055884772019*^9, 3.5910558912673287`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"4", 
+     RowBox[{"Pi", "/", "127.9"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mmu", "=", "0.1056"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nu", "=", "246"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yu", "=", 
+   RowBox[{
+    RowBox[{"mmu", "/", "nu"}], "/", 
+    RowBox[{"Sqrt", "[", "2", "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.591055894755642*^9, 3.591055964067622*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Radiative Return Mechanism", "Section",
+ CellChangeTimes->{{3.590860927024726*^9, 3.590860935363763*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"M2", "[", 
+   RowBox[{"s_", ",", "k_", ",", "m_"}], "]"}], ":=", 
+  RowBox[{"2", 
+   RowBox[{"g", "^", "2"}], " ", 
+   RowBox[{
+    RowBox[{"yu", "^", "2"}], " ", "/", "("}]}]}]], "Input",
+ CellChangeTimes->{{3.5910557529925985`*^9, 3.5910557826142488`*^9}, {
+  3.591055832221157*^9, 3.5910558700852757`*^9}, {3.5910559983393583`*^9, 
+  3.5910559990518303`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+The Z Higgs Associated Production Mechanism\
+\>", "Section",
+ CellChangeTimes->{{3.590860940433584*^9, 3.5908609499280453`*^9}}],
+
+Cell["\<\
+The Higgs Boson Pair Production Mechanism\
+\>", "Section",
+ CellChangeTimes->{{3.5908609563899612`*^9, 3.5908609635674253`*^9}}],
+
+Cell["\<\
+The Comparision between the Two\
+\>", "Section",
+ CellChangeTimes->{{3.5908609718996725`*^9, 3.5908609804967475`*^9}}],
+
+Cell["\<\
+The 2HDM Parameter Fitting With 125.7 GeV SM-Like Higgs Boson\
+\>", "Section",
+ CellChangeTimes->{{3.5908609872206326`*^9, 3.590861006360056*^9}}]
+}, Open  ]]
+},
+WindowSize->{707, 816},
+WindowMargins->{{Automatic, 337}, {Automatic, -30}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 150, 3, 180, "Title"],
+Cell[CellGroupData[{
+Cell[754, 29, 104, 1, 75, "Section"],
+Cell[861, 32, 518, 15, 92, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1416, 52, 115, 1, 75, "Section"],
+Cell[1534, 55, 397, 10, 31, "Input"]
+}, Open  ]],
+Cell[1946, 68, 138, 3, 75, "Section"],
+Cell[2087, 73, 138, 3, 45, "Section"],
+Cell[2228, 78, 128, 3, 45, "Section"],
+Cell[2359, 83, 156, 3, 75, "Section"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
