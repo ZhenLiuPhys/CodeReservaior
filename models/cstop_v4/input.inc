@@ -1,0 +1,3 @@
+c      Input values....
+      double precision y 
+      common /USR_PARAM/  y 

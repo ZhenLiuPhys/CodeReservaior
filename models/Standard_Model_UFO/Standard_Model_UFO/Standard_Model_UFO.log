@@ -1,0 +1,139 @@
+# This file was automatically created by FeynRules 2.3.29
+# Mathematica version: 11.0.0 for Mac OS X x86 (64-bit) (July 28, 2016)
+# Date: Sun 12 Nov 2017 20:20:27
+
+
+# 
+# This is the logfile for the model Standard Model
+
+# Authors: N. Christensen, C. Duhr, B. Fuks
+# Model version: 1.4.7
+# Checking the Quantum numbers
+   * Electric charge defined.
+# Checking the Lagrangians
+   * All Lagrangians are ok.
+#
+# Particle definitions
+#
+
+   * No particles removed. All particles correspond to GenInt setup.
+
+# Automatically assigned PDG numbers
+   * Assigned PDG number 9000001 to particle ghA
+   * Assigned PDG number 9000002 to particle ghZ
+   * Assigned PDG number 9000003 to particle ghWp
+   * Assigned PDG number 9000004 to particle ghWm
+
+
+# Compulsory PDG codes:
+   * Class SM leptons complete.
+   * Class SM neutrinos complete.
+   * Class SM quarks complete.
+   * Class SM gauge bosons complete.
+#
+# Parameter definitions
+#
+
+   * All parameters are ok.
+
+
+# Vertices
+   * Calling FeynmanRules for 5 Lagrangians.
+   * Number of classes vertices: 31
+   * Number of flavored vertices: 57
+   * Saved vertices in InterfaceRun[ 3 ].
+   * Checked QNumber conservation.
+      - Quantum number GhostNumber conserved in all vertices.
+      - Quantum number LeptonNumber NOT conserved in the following vertices
+          {A, l[1], l[1]}
+          {A, l[2], l[2]}
+          {A, l[3], l[3]}
+          {W, vl[1], l[1]}
+          {W, vl[2], l[2]}
+          {W, vl[3], l[3]}
+          {Wbar, l[1], vl[1]}
+          {Wbar, l[2], vl[2]}
+          {Wbar, l[3], vl[3]}
+          {Z, vl[1], vl[1]}
+          {Z, vl[2], vl[2]}
+          {Z, vl[3], vl[3]}
+          {Z, l[1], l[1]}
+          {Z, l[2], l[2]}
+          {Z, l[3], l[3]}
+          {H, l[3], l[3]}
+      - Quantum number Q NOT conserved in the following vertices
+          {A, l[1], l[1]}
+          {A, l[2], l[2]}
+          {A, l[3], l[3]}
+          {A, uq[1], uq[1]}
+          {A, uq[2], uq[2]}
+          {A, uq[3], uq[3]}
+          {A, dq[1], dq[1]}
+          {A, dq[2], dq[2]}
+          {A, dq[3], dq[3]}
+          {G, uq[1], uq[1]}
+          {G, uq[2], uq[2]}
+          {G, uq[3], uq[3]}
+          {G, dq[1], dq[1]}
+          {G, dq[2], dq[2]}
+          {G, dq[3], dq[3]}
+          {W, uq[1], dq[1]}
+          {W, uq[2], dq[2]}
+          {W, uq[3], dq[3]}
+          {Wbar, dq[1], uq[1]}
+          {Wbar, dq[2], uq[2]}
+          {Wbar, dq[3], uq[3]}
+          {Wbar, l[1], vl[1]}
+          {Wbar, l[2], vl[2]}
+          {Wbar, l[3], vl[3]}
+          {Z, uq[1], uq[1]}
+          {Z, uq[2], uq[2]}
+          {Z, uq[3], uq[3]}
+          {Z, dq[1], dq[1]}
+          {Z, dq[2], dq[2]}
+          {Z, dq[3], dq[3]}
+          {Z, l[1], l[1]}
+          {Z, l[2], l[2]}
+          {Z, l[3], l[3]}
+          {H, dq[3], dq[3]}
+          {H, l[3], l[3]}
+          {H, uq[3], uq[3]}
+      - Quantum number Y conserved in all vertices.
+   * particles.py written.
+   * parameters.py written.
+#
+# Vertex definitions
+#
+
+   * 57 vertices written.
+   * vertices.py written.
+#
+# Lorentz structure definitions
+#
+
+   * 17 lorentz structures written.
+   * lorentz.py written.
+#
+# Coupling definitions
+#
+
+   * 27 couplings written.
+   * couplings.py written.
+#
+# Coupling order definitions
+#
+
+   * 0 couplings orders written.
+   * coupling_orders.py written.
+#
+# Decay definitions
+#
+
+   * 15 decays written.
+   * decay.py not written
+#
+# CTCoupling definitions
+#
+
+   * 0 CTcouplings written.
+   * CT_couplings.py written.
