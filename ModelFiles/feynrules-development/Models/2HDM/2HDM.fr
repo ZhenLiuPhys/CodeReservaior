@@ -1,0 +1,105 @@
+(***************************************************************************************************************)
+(******                       This is the FeynRules mod-file for the 2HDM                                 ******)
+(******                                                                                                   ******)
+(******     Authors: C. Duhr, M. Herquet                                                                  ******)
+(******                                                                                                   ******)
+(***************************************************************************************************************)
+
+M$ModelName = "2HDM";
+
+(* The Feynman gauge switch allows to activiate the QCD ghosts (needed, e.g. by CalcHep)
+   Note that the electroweak sector is only implemented in unitary gauge.
+   *)
+
+FeynmanGauge = False;
+
+
+M$Information = {Authors -> {"C. Duhr", "M. Herquet"}, 
+             Version -> "1.0",
+             Date -> "12. 06. 2009",
+             Institutions -> {"Universite catholique de Louvain (CP3)", "NIKHEF Theory Dept."},
+             URLs  -> "http://feynrules.phys.ucl.ac.be/view/Main/2HDM",
+             Emails -> {"claude.duhr@uclouvain.be", "mherquet@nikhef.nl"}};
+
+
+(******* Index definitions ********)
+
+IndexRange[ Index[Generation] ] = Range[3]
+
+IndexRange[ Index[Colour] ] = NoUnfold[Range[3]]
+
+IndexRange[ Index[Gluon] ] = NoUnfold[Range[8]]
+
+IndexRange[ Index[SU2W] ] = Unfold[Range[3]]
+
+IndexRange[ Index[Higgs] ] = Unfold[Range[3]]
+
+
+IndexStyle[Colour, i]
+
+IndexStyle[Generation, f]
+
+IndexStyle[Gluon ,a]
+
+IndexStyle[SU2W ,k]
+
+IndexStyle[Higgs ,j]
+
+
+(******* Gauge parameters (for FeynArts) ********)
+
+GaugeXi[ V[1] ] = GaugeXi[A];
+GaugeXi[ V[2] ] = GaugeXi[Z];
+GaugeXi[ V[3] ] = GaugeXi[W];
+GaugeXi[ V[4] ] = GaugeXi[G];
+GaugeXi[ S[1] ] = 1;
+GaugeXi[ S[2] ] = GaugeXi[Z];
+GaugeXi[ S[3] ] = GaugeXi[W];
+GaugeXi[ U[1] ] = GaugeXi[A];
+GaugeXi[ U[2] ] = GaugeXi[Z];
+GaugeXi[ U[31] ] = GaugeXi[W];
+GaugeXi[ U[32] ] = GaugeXi[W];
+GaugeXi[ U[4] ] = GaugeXi[G];
+
+
+(************** Gauge Groups ******************)
+
+M$GaugeGroups = {
+
+  U1Y == {
+        Abelian -> True,
+        GaugeBoson -> B,
+        Charge -> Y,
+        CouplingConstant -> g1},
+
+  SU2L == {
+        Abelian -> False,
+        GaugeBoson -> Wi,
+        StructureConstant -> Eps,
+        CouplingConstant -> gw},
+
+  SU3C == {
+        Abelian -> False,
+        GaugeBoson -> G,
+        StructureConstant -> f,
+        SymmetricTensor -> dSUN,
+        Representations -> {T, Colour},
+        CouplingConstant -> gs}
+}
+
+Get["Params.fr"];
+
+Get["SMParts.fr"];
+
+Get["Lag.fr"];
+
+Get["HiggsBasis.fr"];
+
+
+M$Parameters = Join[M$Parameters, M$ParametersHiggsBasis];
+
+M$ClassesDescription = Join[M$ClassesDescription, M$HiggsFields];
+
+
+
+

@@ -1,0 +1,93 @@
+(* ********************************************************* *)
+(* *****                                               ***** *)
+(* *****  FeynRules model file: goldstino              ***** *)
+(* *****  Author: B. Fuks                              ***** *)
+(* *****                                               ***** *)
+(* ********************************************************* *)
+
+(* ************************** *)
+(* *****  Information   ***** *)
+(* ************************** *)
+M$ModelName = "GldGrv";
+M$Information = { Authors->{"Benjamin Fuks"}, Emails->{"benjamin.fuks@iphc.cnrs.fr"}, Institutions->{"CERN / IPHC Strasbourg / University of Strasbourg"},
+                  Date->"01.09.13", Version->"1.0.4",
+                  References->{""},
+                  URLs->{"http://feynrules.phys.ucl.ac.be/view/Main/GldGrv"} };
+
+(* Change log *)
+(* v1.0.4: compatibility woth calchep (m32 parameter)  *)
+(* v1.0.3: copatible with the new supercurrent routine *)
+(* v1.0.2: sgoldstino added                            *)
+(* v1.0.1: non zero goldstino mass added               *)
+
+(* ************************** *)
+(* *****  Superfields   ***** *)
+(* ************************** *)
+M$Superfields = {
+  CSF[100] == { ClassName->GLDSF, Chirality->Left, Weyl->GLDw, Scalar->GLDs}
+};
+
+(* ************************** *)
+(* *****     Fields     ***** *)
+(* ************************** *)
+M$ClassesDescription = {
+(* Goldstino: physical Weyls *)
+  W[100] == { ClassName->GLDww, Unphysical->True, Chirality->Left, SelfConjugate->False},
+  W[101] == { ClassName->GLDw, Unphysical->True, Chirality->Left, SelfConjugate->False, Definitions->{GLDw[inds_]->-I*GLDww[inds]}},
+
+(* Gravitino: physical Weyls *)
+ RW[100] == { ClassName->GRww, Unphysical->True, Chirality->Left, SelfConjugate->False},
+ RW[101] == { ClassName->GRw, Unphysical->True, Chirality->Left, SelfConjugate->False, Definitions->{GRw[inds__]->-I*GRww[inds]}},
+
+(* Goldstino: physical Majorana *)
+  F[100] == { ClassName->gld, SelfConjugate->True, WeylComponents->GLDww, ParticleName->"gld", Mass->{Mgld,1*^-13}, Width->0, PDG->1000039, 
+              PropagatorLabel->"gld", PropagatorType->Straight, PropagatorArrow->None},
+
+(* Gravitino: physical Rarita-Schwinger *)
+  R[100] == { ClassName->grv, SelfConjugate->True, WeylComponents->GRww, ParticleName->"grv", Mass->{Mgrv,1*^-13}, Width->0, PDG->1000049, 
+              PropagatorLabel->"grv", PropagatorType->Straight, PropagatorArrow->None},
+
+(* Goldstino: physical decoupling scalar *)
+  S[100] == { ClassName->GLDs, Unphysical->True, SelfConjugate->False, Definitions->{ GLDs -> 0 } }
+};
+
+
+(* ************************** *)
+(* *****   Parameters   ***** *)
+(* ************************** *)
+M$Parameters = {
+  MP  == { TeX->Subscript[M,P], ParameterType->External, ComplexParameter->False, Value->1.22089*^19/Sqrt[8 Pi],
+           BlockName->SMINPUTS, OrderBlock->10, InteractionOrder->{QGR,-1}, Description->"Reduced Planck mass"},
+  M32 == { TeX->Subscript[M,3/2], ParameterType->External, ComplexParameter->False, Value->1*^-13,  ParameterName -> MM32,
+           BlockName->SMINPUTS, OrderBlock->11, Description->"Gravitino mass"}
+};
+
+(* ************************** *)
+(* *****   Lagrangian   ***** *)
+(* ************************** *)
+
+lagra:=Module[{lc, lv ,lw, lmssm, lgld, lgrv, JJ, sp,lor},
+ Print[Style["Preprocessing the MSSM Lagrangian...",Green,Bold]];
+ lc = Plus@@( GrassmannExpand[#] &/@ (List @@ CSFKineticTerms[]) );
+ lv = Plus@@( GrassmannExpand[#] &/@ (List @@ VSFKineticTerms[]) );
+ lw = Plus@@( GrassmannExpand[#] &/@ (List @@ Expand[SPot+HC[SPot]]));
+ lw = lw/.Conjugate[CKM[a_, b_]]*CKM[a_, c_]->IndexDelta[b, c];
+
+ JJ = SuperCurrent[lv,lc,lw, sp, lor];
+
+ Print[Style["Computing the MSSM Lagrangian...",Green,Bold]];
+ lmssm = Plus@@( Theta2Thetabar2Component[#] &/@ (List @@ Tonc[lc]) ) + 
+         Plus@@( Theta2Component[#] &/@ (List @@ Tonc[lv+lw]) ) + 
+         Plus@@( Thetabar2Component[#] &/@ (List @@ Tonc[lv+lw]) ) + 
+         LSoft;         
+ lmssm = ToDirac[SolveEqMotionF[SolveEqMotionD[lmssm]]] + LFeynmanGFix;
+
+ Print[Style["Computing the gravitino Lagrangian...",Green,Bold]];
+ lgrv = ToDirac[GrassmannExpand[1/(2 MP) Ueps[sp,sp2] nc[GRw[sp2, lor], JJ]]];
+ lgrv = lgrv + HC[lgrv]; 
+
+ Print[Style["Computing the goldstino Lagrangian...",Green,Bold]];
+ lgld = ToDirac[GrassmannExpand[-1/(Sqrt[6] M32 MP) Ueps[sp,sp2] nc[del[GLDw [sp2], lor], JJ]]];
+ lgld = lgld + HC[lgld]; 
+
+{lmssm,lgrv,lgld}];

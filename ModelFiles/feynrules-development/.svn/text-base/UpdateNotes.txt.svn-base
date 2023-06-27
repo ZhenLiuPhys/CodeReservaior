@@ -1,0 +1,667 @@
+Update notes for FeynRules 1.7.x
+
+2151 1.7.221 18-09-13 neil:       Added widths for the ghosts in SM.fr. 
+
+2150 1.7.220 18-09-13 neil:       Attempt to fix 4 gluon vertex in WO 
+                                 interface. 
+
+2148 1.7.219 17-09-13 neil:       Fixed bug in W interface regarding 
+                                 FilterRules. 
+
+2116 1.7.218 02-09-13 neil:       Added rule to simplify vertices appearing 
+                                 in gravitino model. 
+
+2114 1.7.217 01-09-13 bfuks:      Bug fix due to changes in the OptimizeIndex 
+                                 function 
+
+2113 1.7.216 28-08-13 omatt:      add condition for the NLO 
+
+2109 1.7.215 27-08-13 aalloul:    Fixed some issues in the mass 
+                                 diagonalization routine raised by Neil 
+
+2106 1.7.214 21-08-13 bfuks:      Improving the efficiency of the flavor 
+                                 expansion 
+
+2101 1.7.213 20-08-13 omatt:      fix bug for lagrangian h cube only 
+
+2099 1.7.212 20-08-13 neil:       Fixed the g,g,s,s vertices in the CH 
+                                 interface. 
+
+2098 1.7.211 20-08-13 neil:       Fixed the funcN.mdl length in CH interface. 
+
+2097 1.7.210 20-08-13 neil:       Fixed auxiliary naming in CH interface. 
+
+2096 1.7.209 20-08-13 neil:       Allow different powers of EE for MSSM in CH 
+                                 interface. 
+
+2089 1.7.208 15-08-13 neil:       Fixed bug with missing term in fermion 
+                                 vertices with more than one term. 
+
+2088 1.7.207 15-08-13 neil:       Added ghost widths (equal to gauge boson 
+                                 widths). 
+
+2086 1.7.206 14-08-13 neil:       Parallelized the CH interface. 
+
+2082 1.7.205 10-08-13 omatt:      UV for the NLO EFT 
+
+2081 1.7.204 10-08-13 bfuks:      Speed improvement 
+
+2077 1.7.203 09-08-13 bfuks:      the blockname is now an option in the mass 
+                                 diagonalziation package 
+
+2072 1.7.202 08-08-13 bfuks:      new message system 
+
+2062 1.7.201 07-08-13 aalloul:    Adapted the ASperGe interface so that it 
+                                 works with Karen's fix. RGEs module has 
+                                 also been improved. 
+
+2057 1.7.200 05-08-13 Karen:      The treatment of mass matrices with two 
+                                 mixing matrices in ASperGe is improved. 
+
+2047 1.7.199 26-07-13 neil:       Further support for spin 3/2 and spin 2 
+                                 fermion vertices. Further improvement for 
+                                 fermion vertices. All in the CH interface. 
+
+2045 1.7.198 24-07-13 neil:       Hard coded the epsilon tensor replacement 
+                                 rule needed for the gravitino interaction 
+                                 in the CalcHEP interface. 
+
+2038 1.7.197 18-07-13 neil:       Working on epsilon rules in CH interface. 
+
+2037 1.7.196 17-07-13 bfuks:      bug with the parallelization 
+
+2036 1.7.195 17-07-13 bfuks:      Bug in the spin-two decays to massless 
+                                 gauge bosons 
+
+2035 1.7.194 16-07-13 neil:       Added rule for index delta on gluon 
+                                 vertices to CalcHEP interface. 
+
+2034 1.7.193 11-07-13 bfuks:      Bug fix in optimizeindex 
+
+2033 1.7.192 09-07-13 bfuks:      Bug fixed in the decay module when summing 
+                                 over spin-two polarizations 
+
+2031 1.7.191 08-07-13 bfuks:      Bug corrected in the decay package 
+
+2030 1.7.190 04-07-13 bfuks:      improving the spin-two handling in the 
+                                 decay module 
+
+2029 1.7.189 04-07-13 bfuks:      Including tensor fields in the decay 
+                                 package 
+
+2026 1.7.188 24-06-13 omatt:      fix bug for SP to the power something that 
+                                 was not put in the lorentz structure 
+
+2021 1.7.187 19-06-13 omatt:      nlo bug fixing 
+
+2019 1.7.186 19-06-13 claudeduhr: added ExpandIndices[] to OptimizeIndex in 
+                                 FR-development. 
+
+2011 1.7.185 17-06-13 bfuks:      Fixed bug when fields have the same names 
+                                 as indices that are used in the Lagrangian 
+
+2007 1.7.184 17-06-13 claudeduhr: Bug fixes: MajoranaPhase (signalled by 
+                                 Camilo) and in new version of GetVertices[] 
+                                 (there was an error message when the vertex 
+                                 list was empty). 
+
+2004 1.7.183 14-06-13 neil:       Slight improvement to LaTeX output. 
+
+2002 1.7.182 13-06-13 neil:       Fixed the double subscript problem on the 
+                                 LaTeX interface. Also, fixed problem with 
+                                 the Overwrite default option being applied. 
+
+2000 1.7.181 13-06-13 claudeduhr: fixed problem with iterators in public part 
+                                 of the code 
+
+1959 1.7.180 02-06-13 omatt:      Polish renormalization 
+
+1925 1.7.179 28-05-13 omatt:      SM two point EW working 
+
+1924 1.7.178 28-05-13 bfuks:      Optimization routine not efficient with 
+                                 symmetric structure constants. Now it is 
+                                 fixed. 
+
+1923 1.7.177 27-05-13 aalloul:    bug corrected in ASperGE output 
+
+1921 1.7.176 26-05-13 aalloul:    Typo corrected 
+
+1920 1.7.175 26-05-13 aalloul:    Some further improvments in the 
+                                 parallelization method 
+
+1917 1.7.174 24-05-13 omatt:      bug fix in IntxnLog dZH works 
+
+1897 1.7.173 22-05-13 omatt:      move to complex mass and fix bug for the 
+                                 Log integral 
+
+1878 1.7.172 19-05-13 aalloul:    Changed the way parallelization is done in 
+                                 GetVertices by creating the new routine 
+                                 ParallelizeMe which allows Mathematica to 
+                                 use all the available cores for the 
+                                 computations. The routines 
+                                 PrepareParallelization and 
+                                 PrepareParallelizationList are still there 
+                                 in case something goes wrong (which should 
+                                 not happen). 
+
+1846 1.7.171 13-05-13 bfuks:      Bug in the UFO interface (Goldstone bosons) 
+
+1842 1.7.170 09-05-13 omatt:      two point fermions smEW working 
+
+1840 1.7.169 08-05-13 Karen:      ASperGe is now compatible with gcc 4.8 
+
+1839 1.7.168 07-05-13 omatt:      first generation of the UV CT for EW SM 
+
+1838 1.7.167 03-05-13 omatt:      further development in NLO 
+
+1836 1.7.166 30-04-13 cdegrand:   derivative to the finite piece done 
+
+1835 1.7.165 29-04-13 omatt:      Development of R2 for EFT 
+
+1834 1.7.164 29-04-13 omatt:      further development in NLO 
+
+1833 1.7.163 26-04-13 aalloul:    Compatibility problem due to line breaks 
+                                 fixed 
+
+1805 1.7.162 16-04-13 bfuks:    Bug in the decays (decays to two identical 
+                                 fermions) 
+
+1795 1.7.161 09-04-13 claudeduhr: fixed bug with abbreviations being double 
+                                 defined if FlavorExpansionw as called 
+                                 twice. 
+
+1764 1.7.160 26-03-13 bfuks:    Bug in index optimization 
+
+1759 1.7.159 25-03-13 omatt:      RenomLog added in PY$GetIntFunctions 
+
+1752 1.7.158 22-03-13 omatt:      Massless particles renormalized onshell 
+
+1751 1.7.157 22-03-13 aalloul:    removed PRIVATE` in GroupToDynkins 
+
+1750 1.7.156 22-03-13 aalloul:    Typos in the RGE routine + created a 
+                                 routine that calculates the dynkin index 
+                                 for any representation of any group 
+                                 provided the generator is provided. This is 
+                                 justified by the fact that before the 
+                                 dynkin index was set to 1/2 for any 
+                                 representation which is not true. 
+
+1748 1.7.155 21-03-13 omatt:      Add IR divergence 
+
+1743 1.7.154 21-03-13 aalloul:    Typo in the insurge package 
+
+1742 1.7.153 21-03-13 aalloul:    modified function FormattingRGE to take 
+                                 into account cases where PauliSigma appears 
+                                 in an equation 
+
+1735 1.7.152 16-03-13 bfuks:    new routines for the supercurrent 
+
+1732 1.7.151 11-03-13 omatt:      Improvement of the NLO part 
+
+1714 1.7.150 15-02-13 bfuks:    Bug in index optimization fixed 
+
+1713 1.7.149 15-02-13 claudeduhr: Bug fix in OptimizeIndex[] in Superfields.m 
+
+1713 1.7.148 15-02-13 claudeduhr: Fixed bu in OptimizeIndex[] in 
+                                 Superfields.m 
+
+1711 1.7.147 13-02-13 omatt:      Minonr bug fixed in the ufo model 
+
+1709 1.7.146 12-02-13 omatt:      improvement of the R2 package 
+
+1708 1.7.145 11-02-13 omatt:      Futher development of the NLO part 
+
+1703 1.7.144 05-02-13 omatt:      Add the FR$Loop option to the new 
+                                 getVertices fct and remove zero vertices in 
+                                 FAinterface 
+
+1702 1.7.143 05-02-13 omatt:      cosmetic for NLO 
+
+1700 1.7.142 04-02-13 omatt:      Last step for the renormalization of the SM 
+
+1692 1.7.141 31-01-13 bfuks:    Parallelization: more improvements 
+
+1691 1.7.140 30-01-13 bfuks:    Paralellization of FeynmanRules -> done 
+
+1687 1.7.139 29-01-13 aalloul:    added numQ[element of mixing matrix ] = 
+                                 True in MassDiagonalization.m 
+
+1686 1.7.138 29-01-13 bfuks:    Parallelizing the decay module 
+
+1684 1.7.137 29-01-13 aalloul:    Added hermiticity check of mass matrices 
+                                 and check of parameters to avoid mass terms 
+                                 to appear in M$Parameters 
+
+1681 1.7.136 28-01-13 aalloul:    removing some useless printings in 
+                                 MassDiagonalization.m 
+
+1677 1.7.135 28-01-13 aalloul:    Changes in MassDiagonalization.m: Added the 
+                                 function ApplyDefinitions and removed 
+                                 generation indices from yukawas to avoid 
+                                 problems with FeynmanRules. PutIndices.m: 
+                                 Added the ghosts case to 
+                                 RestoreFermionIndices. Superfields.m: Added 
+                                 the case Index[type_, Int[{}]] to 
+                                 ToIndexList (this case appears after 
+                                 calling OptimizeIndexName). 
+                                 VertexRoutine.m: The function 
+                                 ExpandIdIndices already calls PrepareLag -> 
+                                 Removed PrepareLag and only kept 
+                                 ExpandIndices which works in both cases 
+                                 with or without M$MIxingsDescription 
+
+1676 1.7.134 27-01-13 aalloul:    doxygen added 
+
+1675 1.7.133 27-01-13 aalloul:    typo in RunASperGe 
+
+1673 1.7.132 27-01-13 aalloul:    typo again 
+
+1672 1.7.131 27-01-13 aalloul:    typo in RunASperGe 
+
+1671 1.7.130 27-01-13 aalloul:    some cleaning in the MassDiagonalization.m 
+                                 file 
+
+1670 1.7.129 27-01-13 aalloul:    A new version of the ASperGe code 
+
+1669 1.7.128 24-01-13 aalloul:    In Initialisation.m, the rules for the anti 
+                                 did not work well when facing a CC -> 
+                                 Corrected. VertexRoutine.m Now thee CC that 
+                                 might appear in the lagrangian is well 
+                                 understood by FR the special treatment 
+                                 becomes irrelevant -> deleted. 
+                                 MassDiagonalization.m Added a function for 
+                                 a proper handling of charge conjugation of 
+                                 fields, added OptimizeIndex at the end of 
+                                 ExpandIndices2 -> useful for some 
+                                 cancellations; added ComputeMassMatrix 
+                                 function (shorter name and opens the way 
+                                 for 1 loop mass matrices). makefile of 
+                                 asperge adapted to handle properly local 
+                                 installations of GSL. 
+
+1660 1.7.127 21-01-13 aalloul:    Fixed a problem in sorting the PDG-Ids in 
+                                 the ASperGe interface 
+
+1657 1.7.126 17-01-13 neil:       Fixed problem with ReadLHAFile not getting 
+                                 the numerical values updated properly and 
+                                 resulting in 1/0. 
+
+1656 1.7.125 17-01-13 bfuks:    Major bug in decays corrected 
+
+1655 1.7.124 17-01-13 omatt:      UV counterterms including renormalization 
+                                 to propagate the finite piece almost 
+                                 working for the SM 
+
+1654 1.7.123 17-01-13 aalloul:    Small improvement to the treatment of the 
+                                 CC operator in the ExpandIndices function. 
+
+1653 1.7.122 16-01-13 neil:       Added Adam to authors when FR loaded. 
+
+1652 1.7.121 16-01-13 neil:       Improved support for slhaPlus (LHA file 
+                                 support). Set default in case of missing 
+                                 LHA file. 
+
+1651 1.7.120 16-01-13 neil:       Parallelized FeynmanRules in Whizard 
+                                 interface. 
+
+1650 1.7.119 16-01-13 neil:       Set FR$Parallel=True as default. 
+
+1649 1.7.118 16-01-13 neil:       Added switch for parallelization : 
+                                 FR$Parallel=True/False. 
+
+1647 1.7.117 16-01-13 neil:       Parallelized FeynmanRules in CH interface. 
+
+1646 1.7.116 16-01-13 aalloul:    When the operator CC is put in the 
+                                 lagrangian, its definitions are such that 
+                                 ExpandIndices doesn't work well. So needed 
+                                 a special treatment just before starting 
+                                 lagrangian expansion. 
+
+1645 1.7.115 15-01-13 neil:       Began process of parallelizing. 
+
+1644 1.7.114 14-01-13 neil:       Updated CH interface to put all powers of 
+                                 GG and EE in Factor rather than Lorentz 
+                                 part. 
+
+1642 1.7.113 11-01-13 aalloul:    It is now possible to compute part of the 
+                                 mass matrices declared in 
+                                 M$MixingsDescription. In the ASperGe 
+                                 interface, more precision digits and 
+                                 possible to write the interface for only 
+                                 some of the mixings. 
+
+1637 1.7.112 07-01-13 bfuks:    Bug fixes in the decay package (cf. spin 
+                                 3/2) 
+
+1626 1.7.111 19-12-12 omatt:      a step towards on-shell renormalization 
+
+1619 1.7.110 12-12-12 aalloul:    changed the way Asperge runs. To run it 
+                                 after compiling, you need to type ./Asperge 
+                                 <input file> <output file> The log file is 
+                                 created automatically. 
+
+1618 1.7.109 12-12-12 aalloul:    The AspergeInterface would have crashed if 
+                                 one used the option Output awith tas a 
+                                 value a non-string. Fixed. 
+
+1609 1.7.108 11-12-12 aalloul:    changed bc/BoundaryConditions.dat to 
+                                 inputs/externals.dat in the mass 
+                                 diagonalization interface 
+
+1607 1.7.107 10-12-12 aalloul:    changed the name of the option Output in 
+                                 the AspergeInterface.m 
+
+1604 1.7.106 08-12-12 aalloul:    Changed the name of the mass matrices 
+                                 diagonalization interface to Asperge. You 
+                                 can now run 
+                                 WriteAsperge[lagrangian,options] to have 
+                                 the c++ code. It can be run from any 
+                                 directory provided the $FeynRulesPath is 
+                                 defined. 
+
+1600 1.7.105 07-12-12 aalloul:    Changed the mass diagonalization interface 
+                                 so that the user can run it from any 
+                                 directory provided that $FeynRulesPath is 
+                                 defined. Changed also the output of the c++ 
+                                 code so that ReadLHAFile[] doesn't crash. 
+
+1599 1.7.104 07-12-12 bfuks:      More userfriendliness with the mass 
+                                 diagonalization package 
+
+1594 1.7.103 05-12-12 bfuks:      Spin 3/2 is now included in the decay 
+                                 package 
+
+1592 1.7.102 04-12-12 bfuks:      Bug in the spin 3/2 stuff 
+
+1587 1.7.101 30-11-12 Karen:      Mass diagonalization: debug option 
+                                 available in the numerical code and a bug 
+                                 is fixed 
+
+1586 1.7.100 27-11-12 cdegrand:   Bug in the handeling of the fermion sign 
+                                 due to the modification of the convention 
+                                 for the 4-fermions 
+
+1582 1.7.99 21-11-12 bfuks:      Bug with the form factors 
+
+1580 1.7.98 21-11-12 bfuks:      Bug fix with the mAss diagonalization 
+                                 package 
+
+1565 1.7.97 13-11-12 aalloul:    Real and complex parameters are now handled 
+                                 in a proper way thanks to Karen. Also some 
+                                 bug fixes in the interface. 
+
+1562 1.7.96 05-11-12 bfuks:      Mass diagonalization can now employ 
+                                 restrictions -> we can diagonalize the MSSM 
+                                 ;) 
+
+1559 1.7.95 04-11-12 omatt:      Bug fixing and polishing of the UV 
+                                 counterterms 
+
+1558 1.7.94 02-11-12 cdegrand:   Bug fixed in the FA interface for the 
+                                 relabelling in SlashedP 
+
+1556 1.7.93 01-11-12 omatt:      bug fixing on the R2 package 
+
+1555 1.7.92 01-11-12 bfuks:      Bug fix in the mass diagonalization routine 
+                                 (thanks to Karen) 
+
+1552 1.7.91 29-10-12 omatt:      Add the UV counterterms in the R2 package 
+
+1551 1.7.90 26-10-12 bfuks:      Major speed improvement for the mass 
+                                 diagonalization package + bug fixes 
+
+1547 1.7.89 26-10-12 bfuks:      NumericalValue function updated (Thanks to 
+                                 Sho Iwamoto) 
+
+1542 1.7.88 24-10-12 bfuks:      Major bug in the mass diagonalization 
+                                 package fixed! 
+
+1540 1.7.87 20-10-12 bfuks:      Bug fixes and improvements for the mass 
+                                 diagonalization package 
+
+1539 1.7.86 17-10-12 bfuks:      The mass diagonalization routine now treats 
+                                 also ghost fields 
+
+1538 1.7.85 17-10-12 bfuks:      Improving the CheckHermiticity routine 
+
+1534 1.7.84 16-10-12 bfuks:      Weyl fermions now supported by the mass 
+                                 diagonalization package 
+
+1531 1.7.83 14-10-12 bfuks:      Bug corrected in the prerotations (see the 
+                                 mass-diagonalization package) 
+
+1529 1.7.82 11-10-12 bfuks:      Chain mixing implemented for the mass 
+                                 diagonalization package 
+
+1523 1.7.81 08-10-12 aalloul:    Correction of a small bug in the 
+                                 definitions of the blocks for the mass 
+                                 matrices diagonalization interface 
+
+1500 1.7.80 02-10-12 aalloul:    semi-colons again! 
+
+1499 1.7.79 02-10-12 aalloul:    a semi-colon was missing in the mass 
+                                 diagonalization interface causing bugs in 
+                                 FeynRules. Sorry for that! 
+
+1498 1.7.78 02-10-12 aalloul:    Bugs fixes in the mass diagonalization 
+                                 interface 
+
+1496 1.7.77 01-10-12 aalloul:    Various bugs fixed in the mass 
+                                 diagonalization interface 
+
+1495 1.7.76 01-10-12 claudeduhr: minor bug fixes 
+
+1493 1.7.75 27-09-12 aalloul:    Complex parameters are working + several 
+                                 bugs corrected. 
+
+1492 1.7.74 27-09-12 Karen:      Main improved 
+
+1491 1.7.73 27-09-12 Karen:      Complex parameters are now allowed 
+
+1485 1.7.72 24-09-12 aalloul:    small typo 
+
+1484 1.7.71 24-09-12 aalloul:    Added the interface and the necessary C++ 
+                                 files for mass matrices diagonalization. To 
+                                 launch the interface just type 
+                                 WriteMassDiagonalizationInterface[Lagrangian]
+                                 after loading FeynRules and the model. 
+
+1483 1.7.70 24-09-12 bfuks:      Mixing parameters are now external 
+                                 parameters 
+
+1480 1.7.69 20-09-12 omatt:      fix an identity for the levi-civita tensor 
+
+1478 1.7.68 20-09-12 claudeduhr: Fixed Exp[] in UFO in development and Made 
+                                 writing of decays.py optional 
+
+1475 1.7.67 18-09-12 claudeduhr: Added PYFormFactors.m 
+
+1474 1.7.66 18-09-12 bfuks:      Mass Diagonalization module: analytic 
+                                 pieces achieved 
+
+1465 1.7.66 14-09-12 bfuks:      Vector and scalar mass matrices now works; 
+                                 new structure handling the mixings 
+
+1458 1.7.65 13-09-12 bfuks:      mass matrices - first modules 
+
+1444 1.7.64 07-09-12 claudeduhr: Added Form factors. UFO still to be done. 
+
+1443 1.7.63 07-09-12 bfuks:      bug fixed in the superfield module 
+
+1420 1.7.62 30-08-12 bfuks:      Bug fix: handling of fundamental and 
+                                 antifundamental color indices when 
+                                 higher-dimensional operators are present 
+
+1407 1.7.61 21-08-12 bfuks:      extra semi column removed in decays.py 
+
+1405 1.7.60 20-08-12 bfuks:      missing rule in the decay package, yielding 
+                                 a now corrected bug 
+
+1396 1.7.59 13-08-12 omatt:      Sign fix for the fourfermion with majorana 
+
+1394 1.7.58 10-08-12 neil:       Fixed a stray comma. 
+
+1393 1.7.57 10-08-12 neil:       Fixed small typo in CH interface. 
+
+1392 1.7.56 09-08-12 bfuks:      minor issue in the mixing declaration 
+
+1388 1.7.55 03-08-12 cdegrand:   Change made for the fourfermion 
+                                 interactions in madgraph, remove sign in 
+                                 the feynman rules for the order of the 
+                                 fermionsavoid gathering of the lorentz 
+                                 structure for multi fermion and remove the 
+                                 breaking into flows. Few SUN algebra 
+                                 modification in the R2 ()(not finished) 
+
+1387 1.7.54 02-08-12 bfuks:      Mixing declaration + mass lagrangian 
+                                 extraction + bug fix in the UFO + bu fix in 
+                                 the decays 
+
+1378 1.7.53 31-07-12 bfuks:      Bug fixed to the decay module (Thanks to 
+                                 Gizem Ozturk) 
+
+1374 1.7.52 31-07-12 bfuks:      bug fixed in the decay package (typo) 
+
+1373 1.7.51 30-07-12 bfuks:      Minor modifications in the optimization 
+                                 routines (cf. higher-dim operators) 
+
+1369 1.7.50 07-07-12 bfuks:      Final fixes for the decays 
+
+1366 1.7.49 01-07-12 bfuks:      Hopefully the final bugs in the decay 
+                                 package are fixed.... 
+
+1363 1.7.48 29-06-12 bfuks:      Mixing declarations step 2 
+
+1360 1.7.48 27-06-12 bfuks:      Bug fixed in the decay package (thanks 
+                                 Olivier) 
+
+1359 1.7.47 26-06-12 bfuks:      Tree-level mass diagonalization: vector 
+                                 fields 
+
+1357 1.7.46 25-06-12 bfuks:      Final (?) bugs removed with the decay 
+                                 package. 
+
+1356 1.7.45 25-06-12 bfuks:      Decay script improved and finalized 
+
+1355 1.7.44 25-06-12 bfuks:      Improvement of the decay package 
+
+1354 1.7.43 25-06-12 bfuks:      Improvement of the decay script 
+
+1351 1.7.42 22-06-12 bfuks:      Speed improvement of the decay package 
+
+1350 1.7.41 22-06-12 bfuks:      Bug fixed with the color in the decay 
+                                 package (thanks to Gizem Ozturk). 
+
+1349 1.7.40 22-06-12 bfuks:      Decay channels and majorana... 
+
+1340 1.7.39 20-06-12 bfuks:      Bug fixes in the decay module 
+
+1339 1.7.38 20-06-12 bfuks:      small issue in the average factor for the 
+                                 decay package 
+
+1337 1.7.37 19-06-12 claudeduhr: Bug fix in the bug fix for ticket #84 
+
+1334 1.7.36 15-06-12 claudeduhr: Fixed bug with Majoranas pointed out by 
+                                 Celine in Ticket #84 
+
+1320 1.7.35 09-06-12 bfuks:      Missing rule in the decay package 
+
+1309 1.7.34 07-06-12 bfuks:      a few bugs fixed in the decay package 
+                                 (MSSM-related) 
+
+1308 1.7.33 07-06-12 neil:       Fixed CH interface to write charge of 
+                                 particle in Aux column when it is 0. 
+
+1305 1.7.32 07-06-12 bfuks:      Improvement of the efficiency of the decay 
+                                 package -> factor of two 
+
+1294 1.7.31 04-06-12 bfuks:      Bug fixed in the decay package 
+
+1293 1.7.30 03-06-12 claudeduhr: Added Olivier's suggestons for UFO + Added 
+                                 User functions to decay module 
+
+1292 1.7.29 01-06-12 claudeduhr: Removed check for antiparticles in initial 
+                                 state from UFO decays. 
+
+1291 1.7.28 01-06-12 bfuks:      The decay width of the antiparticles are 
+                                 not computed anymore by the decay package 
+
+1289 1.7.27 01-06-12 claudeduhr: changes to Decay.m amd PYDecays.m. 
+                                 Antiparticle widths are no longer written 
+                                 out to UFO + Kallen function is now only 
+                                 evaluated in full for 3 massive particles. 
+
+1288 1.7.26 01-06-12 claudeduhr: Added ComputeDecays[ ] to UFO 
+
+1287 1.7.25 01-06-12 bfuks:      Bug fixed in the decay package 
+
+1285 1.7.24 01-06-12 bfuks:      The decay module computes now the widths, 
+                                 instead of only the squared matrix element 
+
+1279 1.7.23 30-05-12 bfuks:      Improvement of the decay package (no more 
+                                 NumericalValue and Factor was added) 
+
+1278 1.7.22 30-05-12 claudeduhr: fixed bug in the multi fermions, related 
+                                 to1234 = 3412. Introduced CanonicalizeFlow[ 
+                                 ] function. 
+
+1277 1.7.21 29-05-12 bfuks:      Bug fixed in the decay package 
+
+1275 1.7.20 28-05-12 bfuks:      issues with previous commitments 
+
+1274 1.7.19 26-05-12 claudeduhr: Mass[ ] is now working after restrictions. 
+                                 Change in GetMass[ ]. 
+
+1273 1.7.18 26-05-12 bfuks:      decay package updated 
+
+1268 1.7.17 25-05-12 aalloul:    Small bug fixed in SpecialExpandIndices and 
+                                 FieldCount. For the first one, a wrong 
+                                 output was produced if expression 'tmplag' 
+                                 contained only 1 term. FieldCount wused to 
+                                 return the number 1 if applied on the 
+                                 expression Dot[field1, field2] -> 
+                                 corrected. 
+
+1263 1.7.16 24-05-12 cdegrand:   Retest new four-fermion in FA, few bug 
+                                 fixed 
+
+1251 1.7.15 24-05-12 bfuks:      Improvement of the decay package 
+
+1237 1.7.14 21-05-12 neil:       Set FeynmanGauge=True for SM.fr as default. 
+
+1227 1.7.13 18-05-12 neil:       Fixed a couple of typos in CH interface. 
+
+1220 1.7.12 16-05-12 claudeduhr: fix in VertexRoutine.m (needed to add a 
+                                 Return to avoid 0 passed to Unitarity 
+                                 checks) and in the MG4 interface (ME[_,_] 
+                                 evaluating to 4) 
+
+1218 1.7.11 16-05-12 neil:       Fixed Eps bug in CH interface. 
+
+1214 1.7.10 16-05-12 bfuks:      new version of the standard model 
+
+1198 1.7.9 14-05-12 bfuks:       Mass diagonalization: extraction of the 
+                                 non-rotated mass lagrangian 
+
+1197 1.7.8 13-05-12 claudeduhr:  Added multifermion routines for UFO 
+
+1192 1.7.7 10-05-12 aalloul:     Added one line in the YukawaRGEs, 
+                                 BilinearRGEs and LinearRGEs to Allow for a 
+                                 direct usage without calling 
+                                 ExtractSuperWTerms before 
+
+1191 1.7.6 10-05-12 aalloul:     Added three functions into InSuRGE: 
+                                 YukawaRGEs, BilinearRGEs and LinearRGEs. 
+                                 These new functions allow to access 
+                                 directly the subsets of RGEs in 
+                                 SuperpotentialRGEs. 
+
+1190 1.7.5 08-05-12 bfuks:       The decay package now handles abbreviations 
+                                 correctly 
+
+1184 1.7.4 02-05-12 claudeduhr:  Added PYDecays.py 
+
+1183 1.7.3 02-05-12 bfuks:       small issue in the commit script 
+
+1182 1.7.2 02-05-12 bfuks:       decay package improved; commit script added;
+                                 versioning system added 

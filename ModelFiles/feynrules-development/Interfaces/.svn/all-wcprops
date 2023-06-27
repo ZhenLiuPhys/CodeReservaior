@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/sources/feynrules/!svn/ver/2150/trunk/feynrules-development/Interfaces
+END
+MadGraphInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/sources/feynrules/!svn/ver/1220/trunk/feynrules-development/Interfaces/MadGraphInterface.m
+END
+SuSpectInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/sources/feynrules/!svn/ver/925/trunk/feynrules-development/Interfaces/SuSpectInterface.m
+END
+AspergeInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/sources/feynrules/!svn/ver/2109/trunk/feynrules-development/Interfaces/AspergeInterface.m
+END
+FeynArtsInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/sources/feynrules/!svn/ver/2021/trunk/feynrules-development/Interfaces/FeynArtsInterface.m
+END
+TemplateInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/TemplateInterface.m
+END
+CalcHepInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/sources/feynrules/!svn/ver/2116/trunk/feynrules-development/Interfaces/CalcHepInterface.m
+END
+TeXInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/sources/feynrules/!svn/ver/2004/trunk/feynrules-development/Interfaces/TeXInterface.m
+END
+WhizardOmegaInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/sources/feynrules/!svn/ver/2148/trunk/feynrules-development/Interfaces/WhizardOmegaInterface.m
+END
+SherpaInterface.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/sources/feynrules/!svn/ver/2146/trunk/feynrules-development/Interfaces/SherpaInterface.m
+END

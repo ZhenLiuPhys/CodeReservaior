@@ -1,0 +1,125 @@
+
+
+
+(****************  Parameters *************)
+
+M$ParametersHiggsBasis = {
+
+   mu1 == {
+        ParameterType -> Internal,
+        Value -> -\[Lambda]1*v^2,
+        Description -> "Phi1 mass term"},
+
+   mu2 == {
+        ParameterType -> Internal,
+        Value -> mhc^2-\[Lambda]3*v^2/2,
+        Description -> "Phi2 mass term"},
+   
+   mu3 == {
+        ParameterType -> Internal,
+        Value -> -\[Lambda]6*v^2/2,
+        Description -> "Phi1 Phi2 mass term"}
+
+}
+
+
+(* *********************************** *)
+(*                                     *)
+(* *****         Higgses         ***** *)
+(*                                     *)
+(* *********************************** *)
+
+M$HiggsFields = {
+
+  S[100] == {
+    ClassName      -> \[Phi]1P,
+    SelfConjugate  -> False,
+    Indices        -> {},
+    Mass -> 0,
+    QuantumNumbers -> {Q -> 1},
+    Definitions    -> {\[Phi]1P -> 0},
+    Unphysical     -> True},
+
+
+  S[101] == {
+    ClassName     -> \[Phi]10,
+    SelfConjugate -> False,
+    Indices       -> {},
+    Mass -> 0,
+    Definitions   -> {\[Phi]10->(v+Nh[1])/Sqrt[2]},
+    Unphysical    -> True},
+
+  S[200] == {
+    ClassName      -> \[Phi]2P,
+    SelfConjugate  -> False,
+    Indices        -> {},
+    Mass -> 0,
+    QuantumNumbers -> {Q -> 1},
+    Definitions    -> {\[Phi]2P -> Hc},
+    Unphysical     -> True},
+
+
+  S[201] == {
+    ClassName     -> \[Phi]20,
+    SelfConjugate -> False,
+    Indices       -> {},
+    Mass -> 0,
+    Definitions   -> {\[Phi]20->(Nh[2]+I*Nh[3])/Sqrt[2]},
+    Unphysical    -> True},
+
+  S[1] == {
+    ClassName      -> Hc,
+    SelfConjugate  -> False,
+    Indices        -> {},
+    QuantumNumbers -> {Q -> 1},
+    Mass           -> {mhc, 120},
+    Width          -> {whc, 1},
+    ParticleName -> "h+",
+    AntiParticleName -> "h-",
+    PDG -> 37,
+    PropagatorType -> ScalarDash,
+    PropagatorArrow -> Forward,
+    PropgatorLabel  -> "hc"},
+
+  S[21] == {
+    ClassName     -> Nh,
+    SelfConjugate -> True,
+    Indices       -> {Index[Higgs]},
+    FlavorIndex -> Higgs,
+    Mass -> 0,
+    ClassMembers  -> {Nh1, Nh2, Nh3},
+    Unphysical    -> True,
+    Definitions   -> {Nh[i_] :> Module[{j}, TH[i,j] H[j]]}},
+
+  S[2] == {
+    ClassName     -> H,
+    SelfConjugate -> True,
+    Indices       -> {Index[Higgs]},
+    FlavorIndex -> Higgs,
+    ClassMembers  -> {h1, h2, h3},
+    Mass -> {MH, {mh1, 120}, {mh2, 130}, {mh3, 140}},
+    Width -> {WH, {Wh1, 1}, {Wh2, 1}, {Wh3, 1}},
+    PDG -> {25,35,36},
+    PropagatorType -> ScalarDash,
+    PropagatorArrow -> None,
+    PropgatorLabel  -> {"h1", "h2", "h3"}}
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+(* ::Package:: *)
+
+(* ::Title:: *)
+(* FeynRules  *)
+
+
+(* ::Text:: *)
+(*Authors : N. Christensen, Claude Duhr, 2008*)
+(**)
+(*If you find any bugs, or want to make suggestions, please address it to :*)
+(*      *)
+(*    Claude Duhr*)
+(*    Universite catholique de Louvain*)
+(*    Department of Physics - FYMA*)
+(*    Chemin du Cyclotron, 2*)
+(*    B - 1348 Louvain - La - Neuve*)
+(*    Belgium*)
+(*    E - mail : claude.duhr@uclouvain.be*)
+(*    *)
+(*    *)
+(*Wiki-page for the FeynRules package:  http://feynrules.phys.ucl.ac.be*)
+(**)
+(*The FeynRules release paper: arXiv:0806.4194*)
+(*  *)
+
+
+(* ::Section:: *)
+(*Interfaces conatined in the package*)
+
+
+(* ::Text:: *)
+(*CalcHep interface :      Neil Christensen, Claude Duhr, 2008*)
+(*FeynArts interface :     Claude Duhr, 2008 (in collaboration with Thomas Hahn)*)
+(*MadGraph interface :   Claude Duhr, Michel Herquet, 2008*)
+(*Sherpa interface :         Claude Duhr, Steffen Schumann, 2008*)
+
+
+(* ::Section:: *)
+(*Main call to the package*)
+
+
+(* If the package is already loaded, then it will not be loaded again *)
+
+(* MW: load the package from $FeynRulesPath *)
+If[FR$Loaded =!= True, 
+	Get[ToFileName[$FeynRulesPath, "FeynRulesPackage.m"]];
+	(*Parallelize - NC*)
+	DistributeDefinitions[$FeynRulesPath];
+	ParallelEvaluate[
+		$Output={};
+		SetDirectory[$FeynRulesPath];
+		Get[ToFileName[$FeynRulesPath, "FeynRulesPackage.m"]];
+		$Output={OutputStream["stdout",1]};
+	];
+	(*End Parallelize - NC*)
+	
+,
+	Print["Package already loaded..."]];

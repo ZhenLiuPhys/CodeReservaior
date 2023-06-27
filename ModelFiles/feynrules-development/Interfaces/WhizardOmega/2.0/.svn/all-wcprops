@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/sources/feynrules/!svn/ver/692/trunk/feynrules-development/Interfaces/WhizardOmega/2.0
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/sources/feynrules/!svn/ver/692/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/configure
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/sources/feynrules/!svn/ver/692/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/Makefile.in
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/sources/feynrules/!svn/ver/692/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/configure.ac
+END
+INSTALL
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/sources/feynrules/!svn/ver/303/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/INSTALL
+END
+Makefile.omega.in
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/sources/feynrules/!svn/ver/692/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/Makefile.omega.in
+END
+Makefile.whizard.in
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/sources/feynrules/!svn/ver/692/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/Makefile.whizard.in
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/WhizardOmega/2.0/install-sh
+END

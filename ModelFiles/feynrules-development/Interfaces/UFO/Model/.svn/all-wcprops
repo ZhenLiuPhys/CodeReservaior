@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/sources/feynrules/!svn/ver/2113/trunk/feynrules-development/Interfaces/UFO/Model
+END
+function_library.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/sources/feynrules/!svn/ver/2113/trunk/feynrules-development/Interfaces/UFO/Model/function_library.py
+END
+object_library.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/sources/feynrules/!svn/ver/1711/trunk/feynrules-development/Interfaces/UFO/Model/object_library.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/sources/feynrules/!svn/ver/1701/trunk/feynrules-development/Interfaces/UFO/Model/__init__.py
+END
+propagators.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/sources/feynrules/!svn/ver/1697/trunk/feynrules-development/Interfaces/UFO/Model/propagators.py
+END
+write_param_card.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/sources/feynrules/!svn/ver/1711/trunk/feynrules-development/Interfaces/UFO/Model/write_param_card.py
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/sources/feynrules/!svn/ver/147/trunk/feynrules-development/Interfaces/MadGraph
+END
+rw_para.f
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/sources/feynrules/!svn/ver/147/trunk/feynrules-development/Interfaces/MadGraph/rw_para.f
+END
+formats.inc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/MadGraph/formats.inc
+END
+helas_couplings.f
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/MadGraph/helas_couplings.f
+END
+lha_read.f
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/MadGraph/lha_read.f
+END
+printout.f
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/MadGraph/printout.f
+END
+testprog.f
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/sources/feynrules/!svn/ver/147/trunk/feynrules-development/Interfaces/MadGraph/testprog.f
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/MadGraph/README
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/sources/feynrules/!svn/ver/10/trunk/feynrules-development/Interfaces/MadGraph/makefile
+END

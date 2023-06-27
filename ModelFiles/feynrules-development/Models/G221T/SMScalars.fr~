@@ -1,0 +1,110 @@
+(**************** This is the FeynRules mod-file for the extension of the SM where additional scalars are added **************)
+(*                                                                                                                           *)
+(*        This model file needs the Standard Model model file SM.fr.                                                         *)  
+(*                                                                                                                           *)
+(*        This model can be used in both the unitary and the Feynman gauge.                                                  *)   
+(*                                                                                                                           *)
+(*        The number of scalars is by default set to 4. It can by changed at wish just by changing the variable Nf below.    *)
+(*****************************************************************************************************************************)
+
+Nf = 4;
+
+M$ModelName = "SM_Plus_Scalars";
+
+M$Information = {Authors -> "C. Duhr",
+                 Institutions -> "Universite catholique de Louvain (CP3).",
+                 Emails -> "claude.duhr@uclouvain.be",
+                 Date -> "14. 06. 2009",
+                 Version  ->  "1.0",
+                 URLs  -> "http://feynrules.phys.ucl.ac.be/view/Main/StandardModelScalars",
+                 References -> "\"The minimal non-minimal Standard Model\", J.J. van der Bij, Phys.Lett.B636:56-59,2006, hep-ph/0603082"};
+
+
+
+(******* Index definitions ********)
+
+(* This is the declaration for the generation index of the new scalars *)
+
+IndexRange[ Index[SGen] ] = Range[Nf]
+
+
+IndexStyle[SGen, k]
+
+
+(****************  Parameters *************)
+
+M$Parameters = {
+
+(*  The parameters of the new sector *)
+
+  \[Lambda]S == {
+       InteractionOrder -> {QED, 2},
+       ParameterName -> lS,
+       Value -> 0.5,
+       BlockName -> INVSCALAR},
+
+  \[Omega] == {
+       InteractionOrder -> {QED, 2},
+       ParameterName -> om,
+       Value -> 0.25,
+       BlockName -> INVSCALAR},
+
+  gsk == {
+       InteractionOrder -> {QED, 2},
+       ParameterName -> gsk,
+       Value -> 0.001,
+       BlockName -> INVSCALAR},
+
+  gskd == {
+       InteractionOrder -> {QED, 2},
+       ParameterName -> gskd,
+       Value -> 0.001,
+       BlockName -> INVSCALAR},
+  gskl == {
+       InteractionOrder -> {QED, 2},
+       ParameterName -> gskl,
+       Value -> 0.001,
+       BlockName -> INVSCALAR}
+  }
+
+
+
+(********* Particle Classes **********)
+
+M$ClassesDescription = {
+   (* The new scalar sector *)
+  S[44] == {
+        ClassName -> Sk,
+        SelfConjugate -> True,
+        Mass -> {MSk, 43.5261},
+        Width -> 0.01,
+	PDG -> 35,
+	ParitcleName -> "sk",
+	FullName -> "sk"}
+}
+
+(*****************************************************************************************)
+
+(* The lagrangian for the new sector *)
+
+ LScalar := 1/2 del[Sk, mu]^2 - \[Lambda]S/(8 Nf) Sk^2 Sk^2 - \[Omega]/(4 Sqrt[Nf]) Sk^2 HC[Phi[ii]].Phi[ii] + gsk Sk uqbar[s1,1,c1].uq[s1,1,c1] + gskd Sk dqbar[s1,3,c1].dq[s1,3,c1] + gskl Sk lbar[s1,f1].l[s1,f1];
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/sources/feynrules/!svn/ver/2145/trunk/feynrules-development/Core
+END
+Decay.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/sources/feynrules/!svn/ver/2036/trunk/feynrules-development/Core/Decay.m
+END
+Superfields.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/sources/feynrules/!svn/ver/2114/trunk/feynrules-development/Core/Superfields.m
+END
+FormFactors.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/sources/feynrules/!svn/ver/1454/trunk/feynrules-development/Core/FormFactors.m
+END
+ExtractVertexTools.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/sources/feynrules/!svn/ver/2101/trunk/feynrules-development/Core/ExtractVertexTools.m
+END
+OutputRoutines.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/sources/feynrules/!svn/ver/1697/trunk/feynrules-development/Core/OutputRoutines.m
+END
+OptimizedFlavExp.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/sources/feynrules/!svn/ver/2106/trunk/feynrules-development/Core/OptimizedFlavExp.m
+END
+ClassDeclarations.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/sources/feynrules/!svn/ver/1799/trunk/feynrules-development/Core/ClassDeclarations.m
+END
+MassDiagonalization.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/sources/feynrules/!svn/ver/2077/trunk/feynrules-development/Core/MassDiagonalization.m
+END
+goldstino.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/sources/feynrules/!svn/ver/2114/trunk/feynrules-development/Core/goldstino.m
+END
+PutIndices.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/sources/feynrules/!svn/ver/2000/trunk/feynrules-development/Core/PutIndices.m
+END
+Loop.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/sources/feynrules/!svn/ver/1959/trunk/feynrules-development/Core/Loop.m
+END
+FieldDeclarations.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/sources/feynrules/!svn/ver/1592/trunk/feynrules-development/Core/FieldDeclarations.m
+END
+InSurGe.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/sources/feynrules/!svn/ver/2062/trunk/feynrules-development/Core/InSurGe.m
+END
+VertexListHandling.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/sources/feynrules/!svn/ver/1795/trunk/feynrules-development/Core/VertexListHandling.m
+END
+Initialisation.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/sources/feynrules/!svn/ver/2007/trunk/feynrules-development/Core/Initialisation.m
+END
+FRFormat.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/sources/feynrules/!svn/ver/2114/trunk/feynrules-development/Core/FRFormat.m
+END
+VertexRoutine.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/sources/feynrules/!svn/ver/2145/trunk/feynrules-development/Core/VertexRoutine.m
+END
+WeylFermions.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/sources/feynrules/!svn/ver/944/trunk/feynrules-development/Core/WeylFermions.m
+END

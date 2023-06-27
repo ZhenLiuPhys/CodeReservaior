@@ -1,0 +1,359 @@
+
+
+
+(****************  Parameters *************)
+
+M$Parameters = {
+
+  (* External parameters *)
+
+  \[Alpha]EWM1== {
+        ParameterType -> External,
+        BlockName -> SMINPUTS,
+        ParameterName -> aEWM1,
+        InteractionOrder -> {QED, -2},
+        Value -> 127.9,
+        Description -> "Inverse of the electroweak coupling constant"},
+
+  Gf == {
+        ParameterType -> External,
+        BlockName -> SMINPUTS,
+        InteractionOrder -> {QED, 2},
+        Value -> 1.16639 * 10^(-5),
+        Description -> "Fermi constant"},
+
+  \[Alpha]S == {
+        ParameterType -> External,
+        BlockName -> SMINPUTS,
+        ParameterName -> aS,
+        InteractionOrder -> {QCD, 2},
+        Value -> 0.118,
+        Description -> "Strong coupling constant at the Z pole."},
+
+
+(* Yukawa masses *)
+    (* u-quarks *)
+
+  yuku == {
+        ParameterType -> External,
+        BlockName -> YUKAWAU,
+        Indices -> {Index[Generation]},
+        AllowSummation -> True,
+        InteractionOrder -> {QED,1},
+        Description -> "Up Yukawa mass"},
+
+  (* d-quarks *)
+
+  yukd == {
+        ParameterType -> External,
+        BlockName -> YUKAWAD,
+        Indices -> {Index[Generation]},
+        AllowSummation -> True,
+        InteractionOrder -> {QED,1},
+        Description -> "Down Yukawa mass"},
+
+
+  (* leptons *)
+
+  yukl == {
+        ParameterType -> External,
+        BlockName -> YUKAWAL,
+        Indices -> {Index[Generation]},
+        AllowSummation -> True,
+        InteractionOrder -> {QED,1},
+        Description -> "Lepton Yukawa mass"},
+
+
+
+   (* Internal Parameters *)
+
+  \[Alpha]EW == {
+        ParameterType -> Internal,
+        Value -> 1/\[Alpha]EWM1,
+        ParameterName -> aEW,
+        InteractionOrder -> {QED, 2},
+        Description -> "Electroweak coupling contant"},
+
+
+  MW == {
+        ParameterType -> Internal,
+        Value -> Sqrt[MZ^2/2+Sqrt[MZ^4/4-Pi/Sqrt[2]*\[Alpha]EW/Gf*MZ^2]],
+        Description -> "W mass"},
+
+  sw2 == {
+        ParameterType -> Internal,
+        Value -> 1-(MW/MZ)^2,
+        Description -> "Squared Sin of the Weinberg angle"},
+
+   ee == {
+        TeX -> e,
+        ParameterType -> Internal,
+        Value -> Sqrt[4 Pi \[Alpha]EW],
+        InteractionOrder -> {QED, 1},
+        Description -> "Electric coupling constant"},
+
+   cw == {
+        TeX -> Subscript[c, w],
+        ParameterType -> Internal,
+        Value -> Sqrt[1 - sw2],
+        Description -> "Cos of the Weinberg angle"},  
+
+   sw == {
+        TeX -> Subscript[s, w],
+        ParameterType -> Internal,
+        Value -> Sqrt[sw2],
+        Description -> "Sin of the Weinberg angle"},  
+
+   gw == {
+        TeX -> Subscript[g, w],
+        ParameterType -> Internal,
+        Value -> ee / sw,
+        InteractionOrder -> {QED, 1},
+        Description -> "Weak coupling constant"},
+
+   g1 == {
+        TeX -> Subscript[g, 1],
+        ParameterType -> Internal,
+        Value -> ee / cw,
+        InteractionOrder -> {QED, 1},
+        Description -> "U(1)Y coupling constant"},
+
+   gs == {
+        TeX -> Subscript[g, s],
+        ParameterType -> Internal,
+        Value -> Sqrt[4 Pi \[Alpha]S],
+        InteractionOrder -> {QCD, 1},
+        ParameterName -> G,
+        Description -> "Strong coupling constant"},
+   
+   v == {
+        ParameterType -> Internal,
+        Value -> 2*MW*sw/ee,
+        InteractionOrder -> {QED, -1},
+        Description -> "Higgs VEV"},
+
+
+(* CKM sector *)
+ CKMR == {
+       ParameterType -> External,
+       BlockName -> CKMR,
+       ComplexParameter -> False,
+       Indices -> {Index[Generation], Index[Generation]},
+       Description -> "Real Part of the CKM-Matrix"},
+
+ CKMI == {
+       ParameterType -> External,
+       BlockName -> CKMI,
+       ComplexParameter -> False,
+       Indices -> {Index[Generation], Index[Generation]},
+       Description -> "Imaginary Part of the CKM-Matrix"},
+
+  CKM == {
+       ComplexParameter -> True,
+       Indices -> {Index[Generation], Index[Generation]},
+       Unitary -> True,
+       Value -> {CKM[i_, j_] -> CKMR[i,j] + I*CKMI[i,j]},
+       Description -> "CKM-Matrix"},
+
+(*Higgs selfcouplings *)
+
+    (* Complex parameters *)
+
+  \[Lambda]1 == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], 1],
+     Value -> 0.5,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l1},
+  
+  \[Lambda]2 == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], 2],
+     Value -> 0.5,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l2},
+   
+   \[Lambda]3 == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], 3],
+     Value -> 1,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l3},
+  
+  \[Lambda]4 == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], 4],
+     Value -> 0,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l4},
+     
+   \[Lambda]5 == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], 5],
+     Value -> 0,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l5},
+     
+  \[Lambda]6R == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], R6],
+     Value -> 0,
+     InteractionOrder -> {QED,2},
+     ParameterName -> lR6},
+
+  \[Lambda]6I == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], I6],
+     Value -> 0,
+     InteractionOrder -> {QED,2},
+     ParameterName -> lI6},
+
+  \[Lambda]6 == {
+     ParameterType -> Internal,
+     ComplexParameter -> True,
+     TeX -> Subscript[\[Lambda], 6],
+     Value -> \[Lambda]6R + I*\[Lambda]6I,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l6},
+
+
+  \[Lambda]7R == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], R7],
+     Value -> 0,
+     InteractionOrder -> {QED,2},
+     ParameterName -> lR7},
+
+  \[Lambda]7I == {
+     ParameterType -> External,
+     BlockName -> Higgs,
+     TeX -> Subscript[\[Lambda], I7],
+     Value -> 0,
+     InteractionOrder -> {QED,2},
+     ParameterName -> lI7},
+
+  \[Lambda]7 == {
+     ParameterType -> Internal,
+     ComplexParameter -> True,
+     TeX -> Subscript[\[Lambda], 7],
+     Value -> \[Lambda]7R + I*\[Lambda]7I,
+     InteractionOrder -> {QED,2},
+     ParameterName -> l7},
+
+  
+
+  
+
+(* Yukawa Matrices *)
+
+  DU == {
+    ParameterType -> Internal,
+    ComplexParameter -> True,
+    TeX -> Subscript[\[CapitalDelta], U],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {DU[i_,j_] :> 0}},
+
+  GUR == {
+    ParameterType -> External,
+    BlockName -> YukawaGUR,
+    ComplexParameter -> False,
+    TeX -> Subscript[\[CapitalGamma], UR],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GUR[i_,j_] :> 0}},
+
+  GUI == {
+    ParameterType -> External,
+    BlockName -> YukawaGUI,
+    ComplexParameter -> False,
+    TeX -> Subscript[\[CapitalGamma], UI],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GUI[i_,j_] :> 0}},
+
+  GU == {
+    ParameterType -> Internal,
+    ComplexParameter -> True,
+    TeX -> Subscript[\[CapitalGamma], U],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GU[i_,j_] :> GUR[i,j] + I*GUI[i,j]}},
+
+  DD == {
+    ParameterType -> Internal,
+    ComplexParameter -> True,
+    TeX -> Subscript[\[CapitalDelta], D],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {DD[i_,j_] :> 0}},
+
+  GDR == {
+    ParameterType -> External,
+    BlockName -> YukawaGDR,
+    ComplexParameter -> False,
+    TeX -> Subscript[\[CapitalGamma], DR],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GDR[i_,j_] :> 0}},
+
+  GDI == {
+    ParameterType -> External,
+    BlockName -> YukawaGDI,
+    ComplexParameter -> False,
+    TeX -> Subscript[\[CapitalGamma], DI],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GDI[i_,j_] :> 0}},
+
+  GD == {
+    ParameterType -> Internal,
+    ComplexParameter -> True,
+    TeX -> Subscript[\[CapitalGamma], D],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GD[i_,j_] :> GDR[i,j] + I*GDI[i,j]}},
+
+  DL == {
+    ParameterType -> Internal,
+    ComplexParameter -> True,
+    TeX -> Subscript[\[CapitalDelta], L],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {DL[i_,j_] :> 0 }},
+
+  GLR == {
+    ParameterType -> External,
+    BlockName -> YukawaGLR,
+    ComplexParameter -> False,
+    TeX -> Subscript[\[CapitalGamma], LR],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GLR[i_,j_] :> 0}},
+
+  GLI == {
+    ParameterType -> External,
+    BlockName -> YukawaGLI,
+    ComplexParameter -> False,
+    TeX -> Subscript[\[CapitalGamma], LI],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GLI[i_,j_] :> 0}},
+
+  GL == {
+    ParameterType -> Internal,
+    ComplexParameter -> True,
+    TeX -> Subscript[\[CapitalGamma], L],
+    Indices -> {Index[Generation], Index[Generation]},
+    Value -> {GL[i_,j_] :> GLR[i,j] + I*GLI[i,j]}},
+
+(* Higgs mixing *)
+
+  TH == {
+    ParameterType -> External,
+    TeX -> Subscript[T,H],
+    Orthogonal -> True,
+    ComplexParameter -> False,
+    BlockName -> HiggsMix,
+    Indices -> {Index[Higgs], Index[Higgs]},
+    Value -> {TH[i_,j_] :> 0 /; NumericQ[i] && NumericQ[j] && (i!= j),TH[i, i] :> 1}}
+
+
+}

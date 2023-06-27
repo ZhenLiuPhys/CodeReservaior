@@ -1,0 +1,456 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     15241,        447]
+NotebookOptionsPosition[     13235,        372]
+NotebookOutlinePosition[     13594,        388]
+CellTagsIndexPosition[     13551,        385]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Setup", "Section"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$OldDir", "=", 
+   RowBox[{"Directory", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"$FeynRulesPath", "=", 
+   RowBox[{
+   "SetDirectory", "[", "\"\<~/FeynRules/trunk/feynrules-development\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{"<<", "FeynRules`"}], "\n", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"LoadModel", "[", "\"\<rpvmssm.fr\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"$CalcLag", "=", "False"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.510511714359152*^9, 3.5105117232569723`*^9}, {
+  3.51167265039277*^9, 3.511672653856179*^9}, {3.511680648528541*^9, 
+  3.5116806490432587`*^9}, {3.511686519419437*^9, 3.511686519752368*^9}, {
+  3.511690090879174*^9, 3.511690091381048*^9}, {3.5117562062782717`*^9, 
+  3.511756206602289*^9}, {3.511757059875284*^9, 3.5117570603649693`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Lagrangian computation and update of the parameters", "Section",
+ CellChangeTimes->{{3.4912194701600723`*^9, 3.4912194715325117`*^9}, {
+   3.50686100488665*^9, 3.506861008141419*^9}, {3.506866546045188*^9, 
+   3.50686654675209*^9}, 3.510511732200982*^9}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Calculation of the Lagrangian itself. This can take ~10 minutes. Therefore, \
+it is saved in a file which can be read each time it is necessary.\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.510511740551598*^9, 3.510511755990991*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{"$CalcLag", ",", 
+    RowBox[{
+     RowBox[{"lagr", "=", "Lag"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Definition", "[", "lagr", "]"}], ">>", "lagrangian.dat"}]}], 
+    ",", 
+    RowBox[{"<<", "lagrangian.dat"}]}], "]"}], ";"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Access to  the different pieces of the Lagrangian", "Subsubsection",
+ CellChangeTimes->{{3.510511759479219*^9, 3.510511767623085*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"LVec", "=", "LVector"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LC", "=", "LChiral"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LW", "=", "LSuperW"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LSUSYBr", "=", "LSoft"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LGaugeFixing", "=", "LFeynmanGFix"}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.506861831832621*^9, {3.50686396987472*^9, 3.50686397956723*^9}, {
+   3.506864125221086*^9, 3.506864126560401*^9}, {3.506864198923688*^9, 
+   3.506864211817175*^9}, {3.510511899307577*^9, 3.510511913390203*^9}, {
+   3.511767566647472*^9, 3.51176757020861*^9}, {3.5117687354968033`*^9, 
+   3.511768736624299*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Unitarity gauge (no ghosts and Goldstones, if the flag $FeynmanGauge was not \
+set correctly)\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.508650830315112*^9, 3.508650832348791*^9}, {
+  3.510511936427951*^9, 3.510511947862441*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LagFeynman", "=", 
+   RowBox[{"lagr", "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"ghG", "[", "__", "]"}], "\[Rule]", "0"}], ",", " ", 
+      RowBox[{
+       RowBox[{"ghGbar", "[", "__", "]"}], "\[Rule]", "0"}], ",", 
+      RowBox[{"ghWp", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghWpbar", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghWmbar", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghWm", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghZ", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghZbar", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghA", "\[Rule]", "0"}], ",", 
+      RowBox[{"ghAbar", "\[Rule]", "0"}], ",", " ", 
+      RowBox[{"G0", "\[Rule]", "0"}], ",", 
+      RowBox[{"GP", "\[Rule]", "0"}], ",", 
+      RowBox[{"GPbar", "\[Rule]", "0"}]}], "}"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.507308829401106*^9, 3.5073089177178507`*^9}, 
+   3.507310603266782*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Update of the parameters (not compatible with the Whizard interface, but \
+compatible with the CalcHep interface)\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.508650840502183*^9, 3.508650841544434*^9}, {
+  3.510511953402149*^9, 3.5105119585185213`*^9}, {3.5105145827435713`*^9, 
+  3.510514606763693*^9}, {3.510514811212164*^9, 3.510514819639832*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ReadLHAFile", "[", 
+   RowBox[{"Input", "\[Rule]", "\"\<af1.dat\>\""}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.507310458304277*^9, 3.507310473976326*^9}, {
+   3.507310607848939*^9, 3.507310608185873*^9}, {3.510511925987886*^9, 
+   3.510511927139632*^9}, 3.510511971795094*^9, {3.51168065590665*^9, 
+   3.511680656147051*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Update of the parameters (compatible the Whizard interface, but not \
+compatible with the Calchep interface)\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.508650840502183*^9, 3.508650841544434*^9}, {
+  3.510511953402149*^9, 3.5105119585185213`*^9}, {3.5105145827435713`*^9, 
+  3.510514606763693*^9}, {3.5105147982031612`*^9, 3.510514828422709*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ReadLHAFile", "[", 
+   RowBox[{"Input", "\[Rule]", "\"\<af1_wo.dat\>\""}], "]"}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.507310458304277*^9, 3.507310473976326*^9}, {
+   3.507310607848939*^9, 3.507310608185873*^9}, {3.510511925987886*^9, 
+   3.510511927139632*^9}, 3.510511971795094*^9, {3.510514852406598*^9, 
+   3.510514852821206*^9}, {3.511691760941457*^9, 3.511691761294777*^9}, {
+   3.511767574101495*^9, 3.511767577751384*^9}, {3.511768731486969*^9, 
+   3.511768733085568*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Feynman rules calculation", "Section",
+ CellChangeTimes->{{3.508650859336681*^9, 3.5086508623247147`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"rules", "=", 
+  RowBox[{"FeynmanRules", "[", 
+   RowBox[{"lagr", ",", 
+    RowBox[{"ScreenOutput", "\[Rule]", "False"}], ",", 
+    RowBox[{"Exclude4Scalars", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.508061383518343*^9, 3.508061413431903*^9}, {
+   3.510571497855986*^9, 3.510571568813633*^9}, {3.510572173986182*^9, 
+   3.5105721743854856`*^9}, 3.510572210161304*^9, {3.510572541184834*^9, 
+   3.510572566899229*^9}, {3.511767581887206*^9, 3.5117675831212263`*^9}, {
+   3.511768728775072*^9, 3.511768729278853*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"L", 
+     StyleBox[
+      AdjustmentBox["A",
+       BoxBaselineShift->-0.4,
+       BoxMargins->{{-0.5, -0.3}, {0, 0}}],
+      FontSize->Smaller], "T", 
+     AdjustmentBox["E",
+      BoxBaselineShift->0.5,
+      BoxMargins->{{-0.3, 0}, {0, 0}}], "X"}],
+    SingleLetterItalics->False], TraditionalForm]]],
+ " Output"
+}], "Section",
+ CellChangeTimes->{{3.510516585335*^9, 3.510516590423654*^9}}],
+
+Cell[BoxData[
+ RowBox[{"WriteLaTeXOutput", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.510516592624229*^9, 3.510516605419121*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Generating MC model files with optimized restrictions", "Section",
+ CellChangeTimes->{{3.51051202409053*^9, 3.5105120509193287`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Optimization", "Subsubsection",
+ CellChangeTimes->{{3.508650844785081*^9, 3.508650846244998*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WriteRestrictionFile", "[", "]"}], ";", " ", 
+  RowBox[{"LoadRestriction", "[", "\"\<ZeroValues.rst\>\"", "]"}], ";", " ", 
+  RowBox[{"DeleteFile", "[", "\"\<ZeroValues.rst\>\"", "]"}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.5080579535629387`*^9, 3.508057961830206*^9}, {
+  3.508058109308621*^9, 3.508058122229617*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["UFO interface", "Subsubsection",
+ CellChangeTimes->{{3.508650849632307*^9, 3.508650853575732*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WriteUFO", "[", 
+   RowBox[{"LagFeynman", ",", " ", 
+    RowBox[{"Exclude4Scalars", "\[Rule]", "True"}]}], "]"}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.5073089286898727`*^9, 3.507308937458375*^9}, {
+   3.507311910076086*^9, 3.507311939653351*^9}, {3.507398897853717*^9, 
+   3.507398901626676*^9}, {3.507399273736373*^9, 3.507399274557005*^9}, {
+   3.510512090662549*^9, 3.510512091990087*^9}, {3.511707532536199*^9, 
+   3.5117075657661657`*^9}, 3.511708094750585*^9, {3.511708971080892*^9, 
+   3.511708974317479*^9}, {3.511757080212324*^9, 3.511757081138858*^9}, {
+   3.511759587557466*^9, 3.5117595883076143`*^9}, {3.511767591006217*^9, 
+   3.511767591302368*^9}, {3.511861703077114*^9, 3.511861704343335*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["CalcHEP model files", "Subsubsection",
+ CellChangeTimes->{{3.510512057239231*^9, 3.510512065782227*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WriteCHOutput", "[", 
+   RowBox[{
+    RowBox[{"lagr", "/.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"LUDD", "[", "__", "]"}], "\[Rule]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"TUDD", "[", "__", "]"}], "\[Rule]", "0"}]}], "}"}]}], ",", 
+    " ", 
+    RowBox[{"Exclude4Scalars", "\[Rule]", "True"}], ",", 
+    RowBox[{"CHSimplify", "\[Rule]", "False"}]}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5105120994316807`*^9, 3.510512105814425*^9}, {
+  3.5105127146047497`*^9, 3.510512717826407*^9}, {3.511681238205276*^9, 
+  3.511681251773086*^9}, {3.5116991968628283`*^9, 3.5116992038702507`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MadGraph model files", "Subsubsection",
+ CellChangeTimes->{{3.510512057239231*^9, 3.510512065782227*^9}, {
+  3.510513948444434*^9, 3.510513949301979*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WriteMGOutput", "[", 
+   RowBox[{
+    RowBox[{"lagr", "/.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"LUDD", "[", "__", "]"}], "\[Rule]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"TUDD", "[", "__", "]"}], "\[Rule]", "0"}]}], "}"}]}], ",", 
+    " ", 
+    RowBox[{"Exclude4Scalars", "\[Rule]", "True"}]}], "]"}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.5105120994316807`*^9, 3.510512105814425*^9}, {
+   3.5105127146047497`*^9, 3.510512717826407*^9}, {3.510513952348884*^9, 
+   3.510513955605171*^9}, 3.511681261085073*^9, {3.511699210333851*^9, 
+   3.511699214431435*^9}, 3.511767650012632*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Whizard model files", "Subsubsection",
+ CellChangeTimes->{{3.510512057239231*^9, 3.510512065782227*^9}, {
+  3.510513948444434*^9, 3.510513949301979*^9}, {3.510514890712902*^9, 
+  3.510514891766358*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WriteWOOutput", "[", 
+   RowBox[{
+    RowBox[{"lagr", "/.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"LUDD", "[", "__", "]"}], "\[Rule]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"TUDD", "[", "__", "]"}], "\[Rule]", "0"}]}], "}"}]}], ",", 
+    " ", 
+    RowBox[{"Exclude4Scalars", "\[Rule]", "True"}]}], "]"}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.5105120994316807`*^9, 3.510512105814425*^9}, {
+   3.5105127146047497`*^9, 3.510512717826407*^9}, {3.510513952348884*^9, 
+   3.510513955605171*^9}, {3.510514894507822*^9, 3.510514894666054*^9}, {
+   3.510572235119359*^9, 3.51057223551847*^9}, {3.510572377588068*^9, 
+   3.510572378543983*^9}, {3.510572531362316*^9, 3.510572531820734*^9}, 
+   3.511681267132571*^9, {3.5116992155985603`*^9, 3.511699218031599*^9}, {
+   3.511767595410138*^9, 3.511767597874593*^9}, {3.511768742819017*^9, 
+   3.51176874413035*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FeynArts model files", "Subsubsection",
+ CellChangeTimes->{{3.510512057239231*^9, 3.510512065782227*^9}, {
+  3.510513948444434*^9, 3.510513949301979*^9}, {3.510514890712902*^9, 
+  3.510514891766358*^9}, {3.5105162477375813`*^9, 3.5105162494145308`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "$OldDir", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WriteFeynArtsOutput", "[", "lagr", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.5105120994316807`*^9, 3.510512105814425*^9}, {
+  3.5105127146047497`*^9, 3.510512717826407*^9}, {3.510513952348884*^9, 
+  3.510513955605171*^9}, {3.510514894507822*^9, 3.510514894666054*^9}, {
+  3.5105162369063063`*^9, 3.510516243526369*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1914, 1123},
+WindowMargins->{{3, Automatic}, {Automatic, 23}},
+ShowSelection->True,
+FrontEndVersion->"7.0 for Linux x86 (64-bit) (February 25, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 24, 0, 73, "Section"],
+Cell[594, 24, 881, 20, 143, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1512, 49, 260, 3, 73, "Section"],
+Cell[CellGroupData[{
+Cell[1797, 56, 243, 4, 29, "Subsubsection"],
+Cell[2043, 62, 316, 9, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2396, 76, 140, 1, 29, "Subsubsection"],
+Cell[2539, 79, 732, 16, 121, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3308, 100, 241, 5, 29, "Subsubsection"],
+Cell[3552, 107, 911, 22, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4500, 134, 360, 6, 29, "Subsubsection"],
+Cell[4863, 142, 459, 9, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5359, 156, 357, 6, 29, "Subsubsection"],
+Cell[5719, 164, 611, 12, 55, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6379, 182, 112, 1, 73, "Section"],
+Cell[6494, 185, 561, 10, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7092, 200, 461, 16, 75, "Section"],
+Cell[7556, 218, 130, 2, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7723, 225, 139, 1, 73, "Section"],
+Cell[CellGroupData[{
+Cell[7887, 230, 103, 1, 29, "Subsubsection"],
+Cell[7993, 233, 356, 7, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8386, 245, 104, 1, 29, "Subsubsection"],
+Cell[8493, 248, 841, 15, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9371, 268, 110, 1, 29, "Subsubsection"],
+Cell[9484, 271, 756, 18, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10277, 294, 160, 2, 29, "Subsubsection"],
+Cell[10440, 298, 750, 19, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11227, 322, 208, 3, 29, "Subsubsection"],
+Cell[11438, 327, 1020, 23, 55, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12495, 355, 259, 3, 29, "Subsubsection"],
+Cell[12757, 360, 450, 8, 55, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
